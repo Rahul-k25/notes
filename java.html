@@ -2,40 +2,245 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Display</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Basics</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
         }
 
-        pre,
+        .container {
+            width: 80%;
+            max-width: 900px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
         code {
             background-color: #f4f4f4;
             padding: 5px;
             border-radius: 4px;
+            display: block;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
         }
     </style>
 </head>
 
 <body>
-    <div id="markdown-content"></div>
+    <div class="container">
+        <h1>Java Basics</h1>
 
-    <script>
-        fetch('./java.md')
-            .then(response => response.text())
-            .then(text => {
-                const htmlContent = marked(text);
-                document.getElementById('markdown-content').innerHTML = htmlContent;
-            })
-            .catch(error => {
-                console.error('Error loading markdown file:', error);
-            });
-    </script>
+    <h2>1. Data Types and Variables</h2>
 
+    <h3>Primitive Data Types</h3>
+    <p>
+        <strong>Definition</strong>: Basic building blocks of data in Java,
+        directly stored in memory.
+    </p>
+    <p><strong>Types</strong>:</p>
+    <ul>
+        <li>
+            <strong>int</strong>: Stores integers (e.g., 1, -10). Example:
+            <pre><code>int age = 25;</code></pre>
+        </li>
+        <li>
+            <strong>float</strong>: Stores decimal numbers with single precision.
+            Example:
+            <pre><code>float price = 19.99f;</code></pre>
+        </li>
+        <li>
+            <strong>double</strong>: Stores decimal numbers with double precision.
+            Example:
+            <pre><code>double salary = 12345.67;</code></pre>
+        </li>
+        <li>
+            <strong>char</strong>: Stores a single character. Example:
+            <pre><code>char grade = 'A';</code></pre>
+        </li>
+        <li>
+            <strong>boolean</strong>: Stores true or false. Example:
+            <pre><code>boolean isEligible = true;</code></pre>
+        </li>
+    </ul>
+
+    <h3>Reference Data Types</h3>
+    <p><strong>Definition</strong>: Store references to objects in memory.</p>
+    <p><strong>Examples</strong>:</p>
+    <ul>
+        <li>
+            <strong>String</strong>: Sequence of characters. Example:
+            <pre><code>String name = "John Doe";</code></pre>
+        </li>
+        <li>
+            <strong>Arrays</strong>: Collection of elements of the same type.
+            Example:
+            <pre><code>int[] numbers = {1, 2, 3, 4, 5};</code></pre>
+        </li>
+        <li>
+            <strong>Objects</strong>: Instances of classes. Example:
+            <pre><code>class Person {
+                String name;
+                int age;
+            }
+
+            Person p = new Person();
+            p.name = "Alice";
+            p.age = 30;</code></pre>
+                    </li>
+                </ul>
+
+                <h2>2. Operators</h2>
+
+                <h3>Arithmetic Operators</h3>
+                <p>Used for mathematical operations. Example:</p>
+                <pre><code>int a = 10, b = 5;
+            System.out.println(a + b); // Addition
+            System.out.println(a - b); // Subtraction
+            System.out.println(a * b); // Multiplication
+            System.out.println(a / b); // Division
+            System.out.println(a % b); // Modulus</code></pre>
+
+                <h3>Relational Operators</h3>
+                <p>Compare two values and return boolean results. Example:</p>
+                <pre><code>int x = 10, y = 20;
+            System.out.println(x > y); // Greater than
+            System.out.println(x < y); // Less than
+            System.out.println(x == y); // Equal to
+            System.out.println(x != y); // Not equal to</code></pre>
+
+                <h3>Logical Operators</h3>
+                <p>Combine multiple boolean expressions. Example:</p>
+                <pre><code>boolean a = true, b = false;
+            System.out.println(a && b); // Logical AND
+            System.out.println(a || b); // Logical OR
+            System.out.println(!a);    // Logical NOT</code></pre>
+
+                <h3>Bitwise Operators</h3>
+                <p>Perform operations on bits. Example:</p>
+                <pre><code>int a = 5, b = 3; // Binary: a = 0101, b = 0011
+            System.out.println(a & b); // Bitwise AND
+            System.out.println(a | b); // Bitwise OR
+            System.out.println(a ^ b); // Bitwise XOR</code></pre>
+
+                <h3>Unary Operators</h3>
+                <p>Operate on a single operand. Example:</p>
+                <pre><code>int a = 10;
+            System.out.println(+a); // Unary plus
+            System.out.println(-a); // Unary minus
+            System.out.println(++a); // Increment
+            System.out.println(--a); // Decrement</code></pre>
+
+                <h3>Ternary Operator</h3>
+                <p>Short-hand for if-else. Example:</p>
+                <pre><code>int a = 10, b = 20;
+            int max = (a > b) ? a : b;
+            System.out.println(max); // Prints 20</code></pre>
+
+                <h2>3. Control Flow Statements</h2>
+
+                <h3>If-Else</h3>
+                <p>Conditional execution of code. Example:</p>
+                <pre><code>int age = 18;
+            if (age >= 18) {
+                System.out.println("Adult");
+            } else {
+                System.out.println("Minor");
+            }</code></pre>
+
+                <h3>Switch-Case</h3>
+                <p>Multiple conditions with specific cases. Example:</p>
+                <pre><code>int day = 3;
+            switch (day) {
+                case 1: System.out.println("Monday"); break;
+                case 2: System.out.println("Tuesday"); break;
+                case 3: System.out.println("Wednesday"); break;
+                default: System.out.println("Invalid day");
+            }</code></pre>
+
+                <h3>Loops</h3>
+
+                <h4>For Loop</h4>
+                <p>Example:</p>
+                <pre><code>for (int i = 0; i < 5; i++) {
+                System.out.println(i);
+            }</code></pre>
+
+                <h4>While Loop</h4>
+                <p>Example:</p>
+                <pre><code>int i = 0;
+            while (i < 5) {
+                System.out.println(i);
+                i++;
+            }</code></pre>
+
+                <h4>Do-While Loop</h4>
+                <p>Example:</p>
+                <pre><code>int i = 0;
+            do {
+                System.out.println(i);
+                i++;
+            } while (i < 5);</code></pre>
+
+                <h3>Break and Continue</h3>
+                <p>
+                    <strong>Break</strong>: Exit the loop. <strong>Continue</strong>: Skip the
+                    current iteration. Example:
+                </p>
+                <pre><code>for (int i = 0; i < 10; i++) {
+                if (i == 5) break;
+                if (i % 2 == 0) continue;
+                System.out.println(i);
+            }</code></pre>
+
+                <h2>4. Input and Output</h2>
+
+                <h3>Scanner Class for User Input</h3>
+                <p>Example:</p>
+                <pre><code>import java.util.Scanner;
+
+            public class InputExample {
+                public static void main(String[] args) {
+                    Scanner scanner = new Scanner(System.in);
+
+                    System.out.println("Enter your name:");
+                    String name = scanner.nextLine();
+
+                    System.out.println("Enter your age:");
+                    int age = scanner.nextInt();
+
+                    System.out.println("Hello, " + name + ". You are " + age + " years old.");
+                }
+            }</code></pre>
+
+                <h3>Basic Output Using System.out</h3>
+                <p>Example:</p>
+                <pre><code>public class OutputExample {
+                public static void main(String[] args) {
+                    System.out.println("Hello, World!"); // Print with newline
+                    System.out.print("This is inline");  // Print inline
+                }
+            }</code></pre>
+    </div>
 </body>
 
 </html>
