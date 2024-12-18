@@ -43,69 +43,74 @@
             border-radius: 4px;
             overflow-x: auto;
         }
+
+        hr {
+            margin: 50px 0;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Java Basics</h1>
+        <div id="java-basic">
+            <h1>Java Basics</h1>
 
-    <h2>1. Data Types and Variables</h2>
+                <h2>1. Data Types and Variables</h2>
 
-    <h3>Primitive Data Types</h3>
-    <p>
-        <strong>Definition</strong>: Basic building blocks of data in Java,
-        directly stored in memory.
-    </p>
-    <p><strong>Types</strong>:</p>
-    <ul>
-        <li>
-            <strong>int</strong>: Stores integers (e.g., 1, -10). Example:
-            <pre><code>int age = 25;</code></pre>
-        </li>
-        <li>
-            <strong>float</strong>: Stores decimal numbers with single precision.
-            Example:
-            <pre><code>float price = 19.99f;</code></pre>
-        </li>
-        <li>
-            <strong>double</strong>: Stores decimal numbers with double precision.
-            Example:
-            <pre><code>double salary = 12345.67;</code></pre>
-        </li>
-        <li>
-            <strong>char</strong>: Stores a single character. Example:
-            <pre><code>char grade = 'A';</code></pre>
-        </li>
-        <li>
-            <strong>boolean</strong>: Stores true or false. Example:
-            <pre><code>boolean isEligible = true;</code></pre>
-        </li>
-    </ul>
+                <h3>Primitive Data Types</h3>
+                <p>
+                    <strong>Definition</strong>: Basic building blocks of data in Java,
+                    directly stored in memory.
+                </p>
+                <p><strong>Types</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>int</strong>: Stores integers (e.g., 1, -10). Example:
+                        <pre><code>int age = 25;</code></pre>
+                    </li>
+                    <li>
+                        <strong>float</strong>: Stores decimal numbers with single precision.
+                        Example:
+                        <pre><code>float price = 19.99f;</code></pre>
+                    </li>
+                    <li>
+                        <strong>double</strong>: Stores decimal numbers with double precision.
+                        Example:
+                        <pre><code>double salary = 12345.67;</code></pre>
+                    </li>
+                    <li>
+                        <strong>char</strong>: Stores a single character. Example:
+                        <pre><code>char grade = 'A';</code></pre>
+                    </li>
+                    <li>
+                        <strong>boolean</strong>: Stores true or false. Example:
+                        <pre><code>boolean isEligible = true;</code></pre>
+                    </li>
+                </ul>
 
-    <h3>Reference Data Types</h3>
-    <p><strong>Definition</strong>: Store references to objects in memory.</p>
-    <p><strong>Examples</strong>:</p>
-    <ul>
-        <li>
-            <strong>String</strong>: Sequence of characters. Example:
-            <pre><code>String name = "John Doe";</code></pre>
-        </li>
-        <li>
-            <strong>Arrays</strong>: Collection of elements of the same type.
-            Example:
-            <pre><code>int[] numbers = {1, 2, 3, 4, 5};</code></pre>
-        </li>
-        <li>
-            <strong>Objects</strong>: Instances of classes. Example:
-            <pre><code>class Person {
-                String name;
-                int age;
-            }
+                <h3>Reference Data Types</h3>
+                <p><strong>Definition</strong>: Store references to objects in memory.</p>
+                <p><strong>Examples</strong>:</p>
+                <ul>
+                    <li>
+                        <strong>String</strong>: Sequence of characters. Example:
+                        <pre><code>String name = "John Doe";</code></pre>
+                    </li>
+                    <li>
+                        <strong>Arrays</strong>: Collection of elements of the same type.
+                        Example:
+                        <pre><code>int[] numbers = {1, 2, 3, 4, 5};</code></pre>
+                    </li>
+                    <li>
+                        <strong>Objects</strong>: Instances of classes. Example:
+                        <pre><code>class Person {
+                            String name;
+                            int age;
+                        }
 
-            Person p = new Person();
-            p.name = "Alice";
-            p.age = 30;</code></pre>
+                        Person p = new Person();
+                        p.name = "Alice";
+                        p.age = 30;</code></pre>
                     </li>
                 </ul>
 
@@ -240,6 +245,229 @@
                     System.out.print("This is inline");  // Print inline
                 }
             }</code></pre>
+        </div>
+        <hr>
+        <div id="oops">
+            <h1>Object-Oriented Programming in Java</h1>
+
+                <h2>1. <strong>Classes and Objects</strong></h2>
+                <p><strong>Definition:</strong> A class is a blueprint for objects, and an object is an instance of a class.</p>
+                <pre><code>class Car {
+                String brand;
+                int year;
+
+                // Constructor
+                Car(String brand, int year) {
+                    this.brand = brand;
+                    this.year = year;
+                }
+                
+                // Method
+                void display() {
+                    System.out.println("Brand: " + brand + ", Year: " + year);
+                }
+            }
+
+            public class Main {
+                public static void main(String[] args) {
+                    Car myCar = new Car("Toyota", 2020);
+                    myCar.display(); // Output: Brand: Toyota, Year: 2020
+                }
+            }</code></pre>
+
+                <h2>2. <strong>Constructors and Initialization Blocks</strong></h2>
+                <p><strong>Constructors:</strong> Special methods used to initialize objects.</p>
+                <p><strong>Initialization Blocks:</strong> Code blocks that are executed when an object is created.</p>
+                <pre><code>class Bike {
+                String model;
+
+                // Constructor
+                Bike(String model) {
+                    this.model = model;
+                    System.out.println("Constructor called");
+                }
+
+                // Instance Initialization Block
+                {
+                    System.out.println("Initialization block called");
+                }
+
+                public static void main(String[] args) {
+                    Bike bike = new Bike("Mountain Bike");
+                }
+            }</code></pre>
+
+                <h2>3. <strong>Static and Non-Static Members</strong></h2>
+                <p><strong>Static Members:</strong> Belong to the class, not instances.</p>
+                <p><strong>Non-Static Members:</strong> Belong to an instance of the class.</p>
+                <pre><code>class Counter {
+                static int count = 0; // Static member
+
+                Counter() {
+                    count++; // Increment static count on object creation
+                }
+
+                public static void main(String[] args) {
+                    new Counter();
+                    new Counter();
+                    System.out.println("Count: " + count); // Output: 2
+                }
+            }</code></pre>
+
+                <h2>4. <strong>Encapsulation</strong></h2>
+                <p><strong>Definition:</strong> Wrapping data (variables) and methods in a single unit (class), and restricting access to some of the object's components.</p>
+                <pre><code>class Account {
+                private double balance; // Private variable
+
+                // Public method to access private balance
+                public double getBalance() {
+                    return balance;
+                }
+
+                // Public method to modify private balance
+                public void deposit(double amount) {
+                    if (amount > 0) {
+                        balance += amount;
+                    }
+                }
+            }</code></pre>
+
+                <h2>5. <strong>Inheritance</strong></h2>
+                <p><strong>Definition:</strong> A mechanism where one class inherits the properties and behaviors (methods) of another class.</p>
+                <p><strong>Types:</strong></p>
+                <ul>
+                    <li>Single Inheritance</li>
+                    <li>Multilevel Inheritance</li>
+                    <li>Hierarchical Inheritance</li>
+                    <li>Hybrid Inheritance (not supported in Java, but can be simulated via interfaces)</li>
+                </ul>
+
+                <h2>6. <strong>Super and This Keyword</strong></h2>
+                <p><strong>'this':</strong> Refers to the current instance of the class.</p>
+                <p><strong>'super':</strong> Refers to the superclass.</p>
+                <pre><code>class Animal {
+                void sound() {
+                    System.out.println("Animal sound");
+                }
+            }
+
+            class Dog extends Animal {
+                void sound() {
+                    super.sound(); // Calling parent class method
+                    System.out.println("Dog barks");
+                }
+
+                public static void main(String[] args) {
+                    Dog dog = new Dog();
+                    dog.sound();
+                }
+            }</code></pre>
+
+                <h2>7. <strong>Polymorphism</strong></h2>
+                <p><strong>Definition:</strong> The ability of an object to take many forms (method overloading, method overriding).</p>
+                <p><strong>Types:</strong></p>
+                <ul>
+                    <li>Compile-time Polymorphism (Method Overloading)</li>
+                    <li>Run-time Polymorphism (Method Overriding)</li>
+                </ul>
+                <p><strong>Code (Method Overloading):</strong></p>
+                <pre><code>class Display {
+                void show(int num) {
+                    System.out.println("Integer: " + num);
+                }
+
+                void show(String msg) {
+                    System.out.println("String: " + msg);
+                }
+            }</code></pre>
+
+                <h2>8. <strong>Method Overloading and Method Overriding</strong></h2>
+                <p><strong>Method Overloading:</strong> Same method name but different parameters.</p>
+                <p><strong>Method Overriding:</strong> Subclass provides a specific implementation of a method already defined in its superclass.</p>
+                <pre><code>class Parent {
+                void display() {
+                    System.out.println("Parent Display");
+                }
+            }
+
+            class Child extends Parent {
+                @Override
+                void display() {
+                    System.out.println("Child Display");
+                }
+
+                public static void main(String[] args) {
+                    Parent p = new Child();
+                    p.display(); // Output: Child Display
+                }
+            }</code></pre>
+
+                <h2>9. <strong>Abstraction</strong></h2>
+                <p><strong>Definition:</strong> Hiding implementation details and showing only essential features.</p>
+                <p><strong>Abstract Class:</strong> Cannot be instantiated, and may have abstract methods (methods without implementation).</p>
+                <p><strong>Interface:</strong> A contract that defines abstract methods to be implemented by concrete classes.</p>
+
+                <h2>10. <strong>Abstract Classes and Methods</strong></h2>
+                <pre><code>abstract class Animal {
+                abstract void sound();
+            }
+
+            class Dog extends Animal {
+                @Override
+                void sound() {
+                    System.out.println("Bark");
+                }
+            }</code></pre>
+
+                <h2>11. <strong>Interfaces (Functional Interfaces)</strong></h2>
+                <p><strong>Definition:</strong> An interface with only one abstract method.</p>
+                <pre><code>@FunctionalInterface
+                interface Greeting {
+                    void sayHello();
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Greeting greet = () -> System.out.println("Hello, World!");
+                        greet.sayHello();
+                    }
+                }</code></pre>
+
+                <h2>12. <strong>Packages and Access Modifiers</strong></h2>
+                <p><strong>Packages:</strong> Group related classes and interfaces together.</p>
+                <p><strong>Access Modifiers:</strong></p>
+                <ul>
+                    <li><strong>Public:</strong> Accessible everywhere.</li>
+                    <li><strong>Private:</strong> Accessible only within the same class.</li>
+                    <li><strong>Protected:</strong> Accessible within the same package or subclasses.</li>
+                    <li><strong>Default:</strong> Accessible within the same package.</li>
+                </ul>
+
+                <h2>13. <strong>Object Class and toString Method</strong></h2>
+                <p><strong>Object Class:</strong> The root class of all Java classes.</p>
+                <p><strong>'toString()' Method:</strong> Used to represent an object as a string.</p>
+                <pre><code>class Car {
+                String brand;
+                int year;
+
+                Car(String brand, int year) {
+                    this.brand = brand;
+                    this.year = year;
+                }
+
+                @Override
+                public String toString() {
+                    return "Car {brand=" + brand + ", year=" + year + "}";
+                }
+            }
+
+            public class Main {
+                public static void main(String[] args) {
+                    Car car = new Car("Tesla", 2023);
+                    System.out.println(car); // Output: Car {brand=Tesla, year=2023}
+                }
+            }</code></pre>
+        </div>
     </div>
 </body>
 
