@@ -13,6 +13,10 @@
             padding: 0;
             background-color: #f7f7f7;
             color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         header {
@@ -23,9 +27,11 @@
         }
 
         main {
-            max-width: 600px;
             margin: 20px auto;
             padding: 20px;
+            flex: 1;
+            width: 50%;
+            max-width: 900px;
         }
 
         .note {
@@ -42,6 +48,8 @@
         .note h2 {
             margin: 0;
             font-size: 18px;
+            display: flex;
+            justify-content: center;
         }
 
         .note p {
