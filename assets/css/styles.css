@@ -1,0 +1,25 @@
+/* Style the accordion button */
+.accordion {
+    background-color: #f1f1f1;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Style the panel */
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: #f9f9f9;
+    overflow: hidden;
+  }
+  
+  .accordion.active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
