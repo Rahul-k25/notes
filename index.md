@@ -2,24 +2,26 @@
 <script src="/assets/js/accordion.js"></script>
 
 
----
-layout: default
-title: My Notes
----
-
 # Welcome to My Notes
 Here are the topics I've covered:
 
 - [Java](mdFiles/java.md)
+- [Interviews resources](mdFiles/interviews-resources.md)
 
-## Notes (Day-wise)
+#### Important links
 
-### <button class="accordion">Note 1</button>
-<div class="panel">
-  <p><a href="mdFiles/sdeSheet/day1.md">Day 1</a></p>
-</div>
+- [Developer roadmaps](https://github.com/kamranahmedse/developer-roadmap?tab=readme-ov-file)
 
-### <button class="accordion">Note 2</button>
-<div class="panel">
-  <p><a href="mdFiles/sdeSheet/day2.md">Day 2</a></p>
-</div>
+#### Striver's SDE sheet Notes (Day-wise)
+- [Note 1](mdFiles/sdeSheet/day1.md)
+- [Note 2](mdFiles/sdeSheet/day2.md)
+- [Note 3](mdFiles/sdeSheet/day3.md)
+- [Note 4](mdFiles/sdeSheet/day4.md)
+- [Note 5](mdFiles/sdeSheet/day5.md)
+- [Note 6](mdFiles/sdeSheet/day6.md)
+- [Note 7](mdFiles/sdeSheet/day7.md)
+- [Note 8](mdFiles/sdeSheet/day8.md)
+- [Note 9](mdFiles/sdeSheet/day9.md)
+- [Note 10](mdFiles/sdeSheet/day10.md)
+- [Note 11](mdFiles/sdeSheet/day11.md)
+- [Note 17](mdFiles/sdeSheet/day17.md)
