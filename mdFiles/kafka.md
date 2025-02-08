@@ -1,4 +1,4 @@
-Full end-to-end Kafka project using Spring Boot, covering:
+Since you're using Spring Boot, I'll provide a full end-to-end Kafka project using Spring Boot, covering:
 
 1. Kafka Producer (Spring Boot) – Sends messages
 
@@ -19,10 +19,10 @@ Full end-to-end Kafka project using Spring Boot, covering:
 
 ---
 
-Step 1: Set Up Kafka
+### Step 1: Set Up Kafka
 
 Download Kafka and start Zookeeper & Kafka Broker
-
+```
 # Start Zookeeper
 bin/zookeeper-server-start.sh config/zookeeper.properties  
 
@@ -31,32 +31,31 @@ bin/kafka-server-start.sh config/server.properties
 
 # Create a topic
 bin/kafka-topics.sh --create --topic logs --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
-
+```
 
 ---
-
-Step 2: Create Spring Boot Project
+### Step 2: Create Spring Boot Project
 
 Use Spring Initializr to create a project with:
 
-Spring Web
+- Spring Web
 
-Spring Boot Kafka
+- Spring Boot Kafka
 
-Spring Data JPA
+- Spring Data JPA
 
-PostgreSQL/MySQL
+- PostgreSQL/MySQL
 
-Thymeleaf (for UI)
+- Thymeleaf (for UI)
 
 
 
----
 
-Step 3: Configure application.properties
+
+### Step 3: Configure application.properties
 
 Update Kafka & Database settings:
-
+```java
 # Kafka Configuration
 spring.kafka.bootstrap-servers=localhost:9092  
 spring.kafka.consumer.group-id=log-group  
@@ -68,13 +67,13 @@ spring.datasource.username=postgres
 spring.datasource.password=secret  
 spring.jpa.hibernate.ddl-auto=update
 
+```
 
----
 
-Step 4: Define Kafka Model (LogMessage.java)
+### Step 4: Define Kafka Model (LogMessage.java)
 
 Create a class to store log data.
-
+```java
 package com.example.kafkalogs.model;
 
 import jakarta.persistence.*;
@@ -100,14 +99,13 @@ public class LogMessage {
 
     // Getters and Setters
 }
+```
 
 
----
-
-Step 5: Create Kafka Producer (LogProducer.java)
+### Step 5: Create Kafka Producer (LogProducer.java)
 
 Sends log messages to Kafka.
-
+```java
 package com.example.kafkalogs.kafka;
 
 import com.example.kafkalogs.model.LogMessage;
@@ -130,12 +128,12 @@ public class LogProducer {
 }
 
 
----
+```
 
-Step 6: Create Kafka Consumer (LogConsumer.java)
+### Step 6: Create Kafka Consumer (LogConsumer.java)
 
 Consumes Kafka messages and saves them to the database.
-
+```java
 package com.example.kafkalogs.kafka;
 
 import com.example.kafkalogs.model.LogMessage;
@@ -159,12 +157,12 @@ public class LogConsumer {
 }
 
 
----
+```
 
-Step 7: Create Repository (LogRepository.java)
+### Step 7: Create Repository (LogRepository.java)
 
 Stores logs in PostgreSQL/MySQL.
-
+```java
 package com.example.kafkalogs.repository;
 
 import com.example.kafkalogs.model.LogMessage;
@@ -176,12 +174,12 @@ public interface LogRepository extends JpaRepository<LogMessage, Long> {
 }
 
 
----
+```
 
-Step 8: Create REST API (LogController.java)
+### Step 8: Create REST API (LogController.java)
 
 Provides endpoints to send and view logs.
-
+```java
 package com.example.kafkalogs.controller;
 
 import com.example.kafkalogs.kafka.LogProducer;
@@ -215,12 +213,12 @@ public class LogController {
 }
 
 
----
+```
 
-Step 9: Create UI (dashboard.html)
+### Step 9: Create UI (dashboard.html)
 
 Displays logs in a web page.
-
+```java
 <!DOCTYPE html>
 <html>
 <head>
@@ -244,12 +242,12 @@ Displays logs in a web page.
 </html>
 
 
----
+```
 
-Step 10: Create Web Controller (DashboardController.java)
+### Step 10: Create Web Controller (DashboardController.java)
 
 Loads logs into the UI.
-
+```java
 package com.example.kafkalogs.controller;
 
 import com.example.kafkalogs.repository.LogRepository;
@@ -272,10 +270,10 @@ public class DashboardController {
     }
 }
 
+```
 
----
 
-Step 11: Run the Application
+### Step 11: Run the Application
 
 1. Start Kafka & PostgreSQL
 
@@ -296,7 +294,7 @@ curl -X POST "http://localhost:8080/logs/send?level=INFO&message=Service%20Start
 
 ---
 
-Summary of Flow
+### Summary of Flow
 
 1. Spring Boot Producer → Sends logs to Kafka
 
@@ -310,4 +308,6 @@ Summary of Flow
 4. Web UI (Thymeleaf) → Displays logs
 
 
+
+Would you like to integrate Kafka Streams, Grafana, or ElasticSearch for advanced processing?
 
