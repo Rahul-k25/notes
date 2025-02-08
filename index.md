@@ -7,6 +7,7 @@ Here are the topics I've covered:
 
 - [Java](mdFiles/java.md)
 - [Interviews resources](mdFiles/interviews-resources.md)
+- [Kafka scenario example](mdFiles/kafka.md)
 
 #### Important links
 
