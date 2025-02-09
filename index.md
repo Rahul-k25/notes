@@ -5,9 +5,8 @@
 # Welcome to My Notes
 Here are the topics I've covered:
 
-- [Java](mdFiles/java.md)
 - [Interviews resources](mdFiles/interviews-resources.md)
-- [Kafka scenario example](mdFiles/kafka.md)
+- [Backend](mdFiles/backend.md)
 
 #### Important links
 

@@ -1,4 +1,6 @@
-Since you're using Spring Boot, I'll provide a full end-to-end Kafka project using Spring Boot, covering:
+## Kafka
+
+Since using Spring Boot, Here is a full end-to-end Kafka project using Spring Boot, covering:
 
 1. Kafka Producer (Spring Boot) – Sends messages
 
