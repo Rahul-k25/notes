@@ -53,10 +53,12 @@ Angular applications are built as a **tree of components**. To create a componen
 
 You define a normal TypeScript class to store data and logic.
 
+
 ```typescript
 export class HeaderComponent {
   // Logic goes here
 }
+
 
 ```
 
@@ -71,6 +73,7 @@ You must "decorate" the class to tell Angular it’s not just a class, but a com
 
 **Example Syntax:**
 
+
 ```typescript
 import { Component } from '@angular/core';
 
@@ -81,6 +84,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {}
+
 
 ```
 
@@ -119,16 +123,20 @@ The course emphasizes using the **Command Line Interface** to automate creation:
 
 **Example:**
 
+
 ```typescript
 // component.ts
 export class UserComponent {
   selectedUser = { name: 'Jasmine' };
 }
 
+
 ```
+
 
 ```html
 <p>Hello, {{ selectedUser.name }}</p>
+
 
 ```
 
@@ -142,8 +150,10 @@ export class UserComponent {
 
 **Example:**
 
+
 ```html
 <img [src]="userImagePath" [alt]="userName" />
+
 
 ```
 
@@ -159,8 +169,10 @@ export class UserComponent {
 
 **Example:**
 
+
 ```html
 <button (click)="onSelectUser()">Click Me</button>
+
 
 ```
 
@@ -210,8 +222,10 @@ The course introduces the idea that Angular needs to know when something changes
 * **Manual Creation:** The course starts by creating a `header` component manually to understand the wiring.
 * **File Naming:** Standard convention is `name.component.ts`.
 * **Class Definition:** A component is just a standard JavaScript/TypeScript class.
+
 ```typescript
 export class HeaderComponent {}
+
 
 ```
 
@@ -270,6 +284,7 @@ export class HeaderComponent {}
 ### 11. Preparing User Data (To Output Dynamic Content)
 
 * **Dummy Data:** A separate file `dummy-users.ts` is created exporting an array of user objects.
+
 ```typescript
 export const DUMMY_USERS = [
   {
@@ -280,6 +295,7 @@ export const DUMMY_USERS = [
   // ... more users
 ];
 
+
 ```
 
 
@@ -288,6 +304,7 @@ export const DUMMY_USERS = [
 ### 12. Storing Data in a Component Class
 
 * Properties defined in the class are accessible to the template.
+
 ```typescript
 import { DUMMY_USERS } from './dummy-users';
 
@@ -297,6 +314,7 @@ export class UserComponent {
   selectedUser = DUMMY_USERS[randomIndex];
 }
 
+
 ```
 
 
@@ -305,8 +323,10 @@ export class UserComponent {
 
 * **Syntax:** `{{ }}`
 * **Usage:** Used to output text content in the HTML.
+
 ```html
 <span>{{ selectedUser.name }}</span>
+
 
 ```
 
@@ -318,8 +338,10 @@ export class UserComponent {
 * **Problem:** We need to bind the `src` attribute of an `<img>` tag to a dynamic path.
 * **Syntax:** `[property]="value"`
 * **Usage:**
+
 ```html
 <img [src]="'users/' + selectedUser.avatar" [alt]="selectedUser.name" />
+
 
 ```
 
@@ -335,17 +357,21 @@ export class UserComponent {
 
 * **Concept:** Instead of writing complex logic inside the HTML template (like `'users/' + selectedUser.avatar`), use a **getter** in the class.
 * **Syntax:**
+
 ```typescript
 get imagePath() {
   return 'assets/users/' + this.selectedUser.avatar;
 }
 
+
 ```
 
 
 * **Template Usage:**
+
 ```html
 <img [src]="imagePath" />
+
 
 ```
 
@@ -356,19 +382,23 @@ get imagePath() {
 
 * **Syntax:** `(event)="methodName()"`
 * **Example:** Listening to a button click.
+
 ```html
 <button (click)="onSelectUser()">User Name</button>
+
 
 ```
 
 
 * **Handler:**
+
 ```typescript
 export class UserComponent {
   onSelectUser() {
     console.log('Clicked!');
   }
 }
+
 
 ```
 
@@ -378,11 +408,13 @@ export class UserComponent {
 
 * **Goal:** Update the UI when the user clicks the button.
 * **Implementation:** We update the `selectedUser` property inside the `onSelectUser()` method.
+
 ```typescript
 onSelectUser() {
     const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
     this.selectedUser = DUMMY_USERS[randomIndex];
 }
+
 
 ```
 
@@ -408,6 +440,7 @@ onSelectUser() {
 
 
 * **Creating a Signal:**
+
 ```typescript
 import { signal } from '@angular/core';
 
@@ -422,21 +455,26 @@ export class UserComponent {
   }
 }
 
+
 ```
 
 
 * **Reading a Signal:** In the template (or code), you must call the signal as a function: `selectedUser()`.
+
 ```html
 <p>{{ selectedUser().name }}</p>
+
 
 ```
 
 
 * **Computed Signals:** Values that depend on other signals. They update automatically when the dependency changes.
+
 ```typescript
 import { computed } from '@angular/core';
 // ...
 imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+
 
 ```
 
@@ -451,6 +489,7 @@ imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
 
 * **Decorator:** Use the `@Input` decorator to mark a property as settable from the outside.
 * **Configuration:**
+
 ```typescript
 import { Input } from '@angular/core';
 
@@ -459,12 +498,15 @@ export class UserComponent {
   @Input() name!: string;
 }
 
+
 ```
 
 
 * **Usage in Parent:**
+
 ```html
 <app-user [avatar]="users[0].avatar" [name]="users[0].name" />
+
 
 ```
 
@@ -474,8 +516,10 @@ export class UserComponent {
 
 * **Optional:** By default, inputs are optional.
 * **Required:** You can force a parent component to provide a value.
+
 ```typescript
 @Input({ required: true }) avatar!: string;
+
 
 ```
 
@@ -487,6 +531,7 @@ export class UserComponent {
 * **Function:** Angular 17.1+ introduced the `input()` function as an alternative to the `@Input` decorator.
 * **Benefit:** It creates a Signal, meaning you get reactivity for free.
 * **Syntax:**
+
 ```typescript
 import { input } from '@angular/core';
 
@@ -498,6 +543,7 @@ export class UserComponent {
   // Computing based on input is easy
   imagePath = computed(() => 'assets/users/' + this.avatar());
 }
+
 
 ```
 
@@ -514,24 +560,30 @@ export class UserComponent {
 * **Mechanism:** Use `EventEmitter` to create a custom event.
 * **Steps:**
 1. **Define:**
+
 ```typescript
 @Output() select = new EventEmitter<string>(); // Emits a string (id)
+
 
 ```
 
 
 2. **Emit:**
+
 ```typescript
 onSelectUser() {
   this.select.emit(this.id);
 }
 
+
 ```
 
 
 3. **Listen (Parent):**
+
 ```html
 <app-user (select)="onSelectUser($event)" />
+
 
 ```
 
@@ -544,6 +596,7 @@ onSelectUser() {
 
 * **Function:** Angular now provides an `output()` function.
 * **Syntax:**
+
 ```typescript
 import { output } from '@angular/core';
 
@@ -555,6 +608,7 @@ export class UserComponent {
   }
 }
 
+
 ```
 
 
@@ -564,8 +618,10 @@ export class UserComponent {
 
 * **Scenario:** Sometimes a property might be a string OR undefined.
 * **Union Type:**
+
 ```typescript
 selectedUserId?: string; // string | undefined
+
 
 ```
 
@@ -580,6 +636,7 @@ selectedUserId?: string; // string | undefined
 ### 30. TypeScript: Type Aliases & Interfaces
 
 * **Interface:**
+
 ```typescript
 export interface User {
   id: string;
@@ -587,23 +644,28 @@ export interface User {
   avatar: string;
 }
 
+
 ```
 
 
 * **Usage in Component:**
+
 ```typescript
 @Input({ required: true }) user!: User;
+
 
 ```
 
 
 * **Type Alias:** (Alternative)
+
 ```typescript
 export type User = {
   id: string;
   name: string;
   avatar: string;
 };
+
 
 ```
 
@@ -615,6 +677,7 @@ export type User = {
 * **Problem:** We have an array of users (`DUMMY_USERS`) and want to render an `<app-user>` for each one.
 * **Modern Syntax:** Angular 17+ introduced the built-in control flow block `@for`.
 * **Track:** You **must** provide a `track` expression. Angular uses this to identify items (like a "key"). usually a unique ID.
+
 ```html
 <ul>
   @for (user of users; track user.id) {
@@ -624,6 +687,7 @@ export type User = {
   }
 </ul>
 
+
 ```
 
 
@@ -632,12 +696,14 @@ export type User = {
 
 * **Problem:** We only want to show the task list if a user has actually been selected.
 * **Modern Syntax:**
+
 ```html
 @if (selectedUser) {
   <app-tasks [name]="selectedUser.name" />
 } @else {
   <p>Select a user to see their tasks!</p>
 }
+
 
 ```
 
@@ -671,8 +737,10 @@ export type User = {
 * **Goal:** Highlight the selected user in the list (add a `.active` CSS class).
 * **Syntax:** `[class.className]="condition"`
 * **Usage:**
+
 ```html
 <button [class.active]="selected" (click)="onSelectUser()">
+
 
 ```
 
@@ -701,10 +769,12 @@ export type User = {
 
 
 * **Conditional UI:**
+
 ```html
 @if (isAddingTask) {
   <app-new-task (cancel)="onCancelAddTask()" />
 }
+
 
 ```
 
@@ -721,8 +791,10 @@ export type User = {
 * **Data Flow Up:** When the user types, `propertyName` is automatically updated in the class.
 
 
+
 ```html
 <input type="text" [(ngModel)]="enteredTitle" />
+
 
 ```
 
@@ -738,10 +810,12 @@ export type User = {
 
 * **Event:** Use the `(ngSubmit)` event on the `<form>` element, not `(click)` on the button.
 * **Why:** This ensures standard form behavior (like submitting on "Enter" key) works.
+
 ```html
 <form (ngSubmit)="onSubmit()">
   <button type="submit">Create</button>
 </form>
+
 
 ```
 
@@ -754,10 +828,12 @@ export type User = {
 * **Implementation:**
 1. **In Card Component Template:** Add the `<ng-content />` tag. This marks the "slot" where external content will be dropped.
 2. **Usage:**
+
 ```html
 <app-card>
   <form>...</form>
 </app-card>
+
 
 ```
 
@@ -771,8 +847,10 @@ export type User = {
 * **Definition:** Pipes are simple functions that accept an input value and return a transformed value for display in the template.
 * **Syntax:** Use the pipe operator `|`.
 * **Example (Date Pipe):** Formatting a raw date string into a readable format.
+
 ```html
 <p>{{ task.dueDate | date:'fullDate' }}</p>
+
 
 ```
 
@@ -795,18 +873,22 @@ export type User = {
 * **Problem:** If we create a `TasksService`, how does a component get access to it? We *could* create a new instance manually (`new TasksService()`), but this is bad practice (tight coupling).
 * **Solution:** **Dependency Injection**. We ask Angular to give us an instance.
 * **Step 1: The Decorator:** Add `@Injectable({ providedIn: 'root' })` to the Service class. This tells Angular it can inject this class anywhere in the app.
+
 ```typescript
 @Injectable({ providedIn: 'root' })
 export class TasksService { ... }
+
 
 ```
 
 
 * **Step 2: Injection (Constructor Method):**
+
 ```typescript
 export class TasksComponent {
   constructor(private tasksService: TasksService) {}
 }
+
 
 ```
 
@@ -816,12 +898,14 @@ export class TasksComponent {
 
 * **Modern Approach:** Angular 14+ introduced the `inject()` function.
 * **Usage:** You can use it as a property assignment instead of the constructor.
+
 ```typescript
 import { inject } from '@angular/core';
 
 export class TasksComponent {
   private tasksService = inject(TasksService);
 }
+
 
 ```
 
@@ -882,6 +966,7 @@ To make a component work with Modules, you must change its configuration:
 
 **Example (Module-based Component):**
 
+
 ```typescript
 @Component({
   selector: 'app-header',
@@ -891,6 +976,7 @@ To make a component work with Modules, you must change its configuration:
   // No 'imports'
 })
 export class HeaderComponent {}
+
 
 ```
 
@@ -903,8 +989,10 @@ The `@NgModule` decorator takes a metadata object with four key arrays:
 * **Purpose:** Introduces components, directives, and pipes to the Module.
 * **Rule:** A component must be declared in **exactly one** NgModule.
 * **Example:**
+
 ```typescript
 declarations: [AppComponent, HeaderComponent, UserComponent]
+
 
 ```
 
@@ -920,8 +1008,10 @@ declarations: [AppComponent, HeaderComponent, UserComponent]
 
 
 * **Example:**
+
 ```typescript
 imports: [BrowserModule, FormsModule]
+
 
 ```
 
@@ -1002,6 +1092,7 @@ imports: [BrowserModule, FormsModule]
 
 * **Task:** Create a simple presentational component for the logo and title.
 * **Code (Component Class):**
+
 ```typescript
 import { Component } from '@angular/core';
 
@@ -1013,15 +1104,18 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {}
 
+
 ```
 
 
 * **Code (Template):**
+
 ```html
 <header>
   <img src="assets/investment-calculator-logo.png" alt="Green graph" />
   <h1>Investment Calculator</h1>
 </header>
+
 
 ```
 
@@ -1031,6 +1125,7 @@ export class HeaderComponent {}
 
 * **Task:** Create the form area where users type their numbers.
 * **Code (Component Class):**
+
 ```typescript
 import { Component } from '@angular/core';
 
@@ -1041,6 +1136,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-input.component.css']
 })
 export class UserInputComponent {}
+
 
 ```
 
@@ -1056,6 +1152,7 @@ export class UserInputComponent {}
 * **Task:** Bind the input fields to properties in the class so we can access the values.
 * **Requirement:** Import `FormsModule` to use `[(ngModel)]`.
 * **Code (Component Class):**
+
 ```typescript
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -1075,10 +1172,12 @@ export class UserInputComponent {
   enteredDuration = signal('10');
 }
 
+
 ```
 
 
 * **Code (Template):**
+
 ```html
 <section id="user-input">
   <div class="input-group">
@@ -1093,6 +1192,7 @@ export class UserInputComponent {
     </div>
 </section>
 
+
 ```
 
 
@@ -1101,21 +1201,25 @@ export class UserInputComponent {
 
 * **Task:** React when the user clicks "Calculate".
 * **Code (Template):**
+
 ```html
 <form (ngSubmit)="onSubmit()">
    <button type="submit">Calculate</button>
 </form>
 
+
 ```
 
 
 * **Code (Class Logic):**
+
 ```typescript
 onSubmit() {
   // Logic to handle submission will go here
   console.log('Submitted!');
   console.log(this.enteredInitialInvestment());
 }
+
 
 ```
 
@@ -1125,6 +1229,7 @@ onSubmit() {
 
 * **Task:** Define an interface so we don't pass 4 loose arguments around. We want type safety.
 * **Code (`investment-input.model.ts`):**
+
 ```typescript
 export interface InvestmentInput {
   initialInvestment: number;
@@ -1132,6 +1237,7 @@ export interface InvestmentInput {
   expectedReturn: number;
   annualInvestment: number;
 }
+
 
 ```
 
@@ -1141,6 +1247,7 @@ export interface InvestmentInput {
 
 * **Task:** The `UserInputComponent` has the data, but the `AppComponent` needs it to calculate results. We need to emit an event.
 * **Code (UserInputComponent):**
+
 ```typescript
 import { Component, output, signal } from '@angular/core';
 import { InvestmentInput } from './investment-input.model';
@@ -1162,6 +1269,7 @@ export class UserInputComponent {
   }
 }
 
+
 ```
 
 
@@ -1173,13 +1281,16 @@ export class UserInputComponent {
 
 * **Task:** Listen to the `(calculate)` event emitted by `<app-user-input>` and store the data to run the calculation.
 * **Code (AppComponent Template):**
+
 ```html
 <app-user-input (calculate)="onCalculateInvestmentResults($event)" />
+
 
 ```
 
 
 * **Code (AppComponent Logic):**
+
 ```typescript
 import { Component } from '@angular/core';
 import { InvestmentInput } from './investment-input.model';
@@ -1192,6 +1303,7 @@ export class AppComponent {
   }
 }
 
+
 ```
 
 
@@ -1200,6 +1312,7 @@ export class AppComponent {
 
 * **Task:** Implement the financial math. The course provides a specific algorithm to determine yearly growth.
 * **Code (AppComponent):**
+
 ```typescript
 resultsData?: {
   year: number;
@@ -1235,6 +1348,7 @@ onCalculateInvestmentResults(data: InvestmentInput) {
   this.resultsData = annualData;
 }
 
+
 ```
 
 
@@ -1243,6 +1357,7 @@ onCalculateInvestmentResults(data: InvestmentInput) {
 
 * **Task:** Create a component to render the table of results.
 * **Code (Results Component):**
+
 ```typescript
 import { Component, input } from '@angular/core';
 
@@ -1266,6 +1381,7 @@ export class InvestmentResultsComponent {
   }[]>(); 
 }
 
+
 ```
 
 
@@ -1274,6 +1390,7 @@ export class InvestmentResultsComponent {
 
 * **Task:** Render a table row `<tr>` for every year in the results array. Also, show a fallback message if no results exist yet.
 * **Code (Template):**
+
 ```html
 @if (!results()) {
   <p class="center">Please enter some values and press "Calculate".</p>
@@ -1302,6 +1419,7 @@ export class InvestmentResultsComponent {
   </table>
 }
 
+
 ```
 
 
@@ -1312,9 +1430,11 @@ export class InvestmentResultsComponent {
 * **Implementation:** Use the built-in `currency` pipe.
 * **Requirements:** In a Standalone Component, you must import `CurrencyPipe` (or `CommonModule`).
 * **Code (Template):**
+
 ```html
 <td>{{ result.valueEndOfYear | currency }}</td>
 <td>{{ result.interest | currency }}</td>
+
 
 ```
 
@@ -1327,6 +1447,7 @@ export class InvestmentResultsComponent {
 
 **Step A: Create the Service**
 `ng g s investment`
+
 
 ```typescript
 import { Injectable, signal } from '@angular/core';
@@ -1344,10 +1465,12 @@ export class InvestmentService {
   }
 }
 
+
 ```
 
 **Step B: Update UserInputComponent (Send Data to Service)**
 Instead of emitting an event to the parent, we call the service directly.
+
 
 ```typescript
 import { inject } from '@angular/core';
@@ -1364,10 +1487,12 @@ export class UserInputComponent {
   }
 }
 
+
 ```
 
 **Step C: Update ResultsComponent (Read Data from Service)**
 Instead of receiving data via `@Input`, we read the signal from the service.
+
 
 ```typescript
 import { inject, computed } from '@angular/core';
@@ -1380,6 +1505,7 @@ export class InvestmentResultsComponent {
   results = computed(() => this.investmentService.resultData());
   // Or simply access it directly in the template via a getter
 }
+
 
 ```
 
@@ -1399,6 +1525,7 @@ You must create a new file `src/app/app.module.ts`. This will act as the central
 * **Bootstrap:** You must tell Angular to start with `AppComponent`.
 
 **Code Example:**
+
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -1422,6 +1549,7 @@ import { InvestmentResultsComponent } from './investment-results.component';
 })
 export class AppModule {}
 
+
 ```
 
 ### 2. Update Component Decorators
@@ -1433,6 +1561,7 @@ You must go into **every single component file** (`app.component.ts`, `header.co
 
 **Before (Standalone):**
 
+
 ```typescript
 @Component({
   selector: 'app-user-input',
@@ -1442,9 +1571,11 @@ You must go into **every single component file** (`app.component.ts`, `header.co
 })
 export class UserInputComponent {}
 
+
 ```
 
 **After (Module-based):**
+
 
 ```typescript
 @Component({
@@ -1454,6 +1585,7 @@ export class UserInputComponent {}
   templateUrl: '...'
 })
 export class UserInputComponent {}
+
 
 ```
 
@@ -1466,11 +1598,13 @@ The entry point must change. Instead of bootstrapping a **component**, you now b
 
 **Code Example:**
 
+
 ```typescript
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
 platformBrowserDynamic().bootstrapModule(AppModule);
+
 
 ```
 
@@ -1564,25 +1698,31 @@ In the Standalone version, the `InvestmentResultsComponent` likely imported `Cur
 * **Concept:** The `selector` property in the `@Component` decorator is actually a **CSS Selector**. You are not limited to just defining custom HTML tags.
 * **Types of Selectors:**
 1. **Element Selector (Standard):**
+
 ```typescript
 selector: 'app-server',
 // HTML: <app-server></app-server>
+
 
 ```
 
 
 2. **Attribute Selector:** (Useful if you want to enhance a standard HTML element).
+
 ```typescript
 selector: '[app-server]',
 // HTML: <div app-server></div>
+
 
 ```
 
 
 3. **Class Selector:**
+
 ```typescript
 selector: '.app-server',
 // HTML: <div class="app-server"></div>
+
 
 ```
 
@@ -1596,16 +1736,20 @@ selector: '.app-server',
 * **Goal:** You might want the public property name (used in the HTML) to be different from the internal variable name (used in TypeScript).
 * **Syntax:** Pass a string argument to `@Input()`.
 * **Code:**
+
 ```typescript
 // Inside ServerElementComponent
 @Input('srvElement') element: { type: string, name: string, content: string };
+
 
 ```
 
 
 * **Usage in Parent HTML:**
+
 ```html
 <app-server-element [srvElement]="serverElement"></app-server-element>
+
 
 ```
 
@@ -1616,16 +1760,20 @@ selector: '.app-server',
 * **Goal:** Same concept as Inputs, but for Outputs.
 * **Syntax:** Pass a string argument to `@Output()` or `output()`.
 * **Code:**
+
 ```typescript
 // Inside CockpitComponent
 @Output('bpCreated') blueprintCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
+
 
 ```
 
 
 * **Usage in Parent HTML:**
+
 ```html
 <app-cockpit (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+
 
 ```
 
@@ -1650,6 +1798,7 @@ selector: '.app-server',
 
 
 * **Code Example:**
+
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
 
@@ -1661,6 +1810,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class ServerElementComponent {}
 
+
 ```
 
 
@@ -1670,21 +1820,25 @@ export class ServerElementComponent {}
 * **Problem:** Sometimes you want to style the actual custom tag itself (`<app-server-element>`), not just the HTML inside it.
 * **Solution:** Use the `:host` pseudo-selector in the component's CSS file.
 * **Code (`server-element.component.css`):**
+
 ```css
 :host {
   display: block;
   border: 1px solid black;
 }
 
+
 ```
 
 
 * **:host-context:** Used to style the host element *only if* it sits inside a specific parent class.
+
 ```css
 :host-context(.theme-blue) {
   /* Only applies if some parent has class="theme-blue" */
   color: blue;
 }
+
 
 ```
 
@@ -1705,6 +1859,7 @@ To use a hook, you should implement the corresponding interface (e.g., `OnInit`,
 * **Trigger:** Called right at the start, and **whenever** one of our bound input properties (`@Input`) changes.
 * **Arguments:** Receives a `SimpleChanges` object which holds the current and previous values of the inputs.
 * **Code:**
+
 ```typescript
 import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
 
@@ -1717,6 +1872,7 @@ export class DemoComponent implements OnChanges {
   }
 }
 
+
 ```
 
 
@@ -1726,10 +1882,12 @@ export class DemoComponent implements OnChanges {
 * **Trigger:** Called once the component has been initialized (after the constructor).
 * **Usage:** This is where you run initialization logic (like fetching initial data).
 * **Note:** The component has been created, but not yet displayed in the DOM.
+
 ```typescript
 ngOnInit() {
   console.log('ngOnInit called!');
 }
+
 
 ```
 
@@ -1739,10 +1897,12 @@ ngOnInit() {
 
 * **Trigger:** Called during **every** change detection run.
 * **Note:** Angular checks for changes frequently (mouse moves, clicks, promises). `ngDoCheck` runs on all of these, even if no data actually changed. It is used for manual change detection logic (rarely used).
+
 ```typescript
 ngDoCheck() {
   console.log('ngDoCheck called!');
 }
+
 
 ```
 
@@ -1752,10 +1912,12 @@ ngDoCheck() {
 
 * **Trigger:** Called after content (from `ng-content`) has been projected into the view.
 * **Timing:** Runs only once.
+
 ```typescript
 ngAfterContentInit() {
   console.log('ngAfterContentInit called!');
 }
+
 
 ```
 
@@ -1764,10 +1926,12 @@ ngAfterContentInit() {
 #### E. ngAfterContentChecked
 
 * **Trigger:** Called every time the projected content has been checked.
+
 ```typescript
 ngAfterContentChecked() {
   console.log('ngAfterContentChecked called!');
 }
+
 
 ```
 
@@ -1777,10 +1941,12 @@ ngAfterContentChecked() {
 
 * **Trigger:** Called after the component's view (and child views) has been fully initialized/rendered.
 * **Usage:** You can access DOM elements here (using ViewChild) because they now exist in the DOM.
+
 ```typescript
 ngAfterViewInit() {
   console.log('ngAfterViewInit called!');
 }
+
 
 ```
 
@@ -1789,10 +1955,12 @@ ngAfterViewInit() {
 #### G. ngAfterViewChecked
 
 * **Trigger:** Called every time the view (and child views) have been checked.
+
 ```typescript
 ngAfterViewChecked() {
   console.log('ngAfterViewChecked called!');
 }
+
 
 ```
 
@@ -1802,10 +1970,12 @@ ngAfterViewChecked() {
 
 * **Trigger:** Called just before the component is removed from the DOM.
 * **Usage:** Great for cleanup (unsubscribing from Observables, detaching event listeners) to prevent memory leaks.
+
 ```typescript
 ngOnDestroy() {
   console.log('ngOnDestroy called!');
 }
+
 
 ```
 
@@ -1825,19 +1995,23 @@ ngOnDestroy() {
 * **Syntax:** Add a hashtag `#variableName` to an HTML element.
 * **Usage:** You can pass this reference to event handlers in the template.
 * **Code (Template):**
+
 ```html
 <input type="text" #serverNameInput>
 
 <button (click)="onAddServer(serverNameInput)">Add Server</button>
 
+
 ```
 
 
 * **Code (Class):**
+
 ```typescript
 onAddServer(nameInput: HTMLInputElement) {
   console.log(nameInput.value);
 }
+
 
 ```
 
@@ -1850,6 +2024,7 @@ onAddServer(nameInput: HTMLInputElement) {
 * **Argument:** The name of the local reference string.
 * **Property Type:** `ElementRef` (A wrapper around the native HTML element).
 * **Code:**
+
 ```typescript
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
@@ -1868,6 +2043,7 @@ export class CockpitComponent implements AfterViewInit {
   }
 }
 
+
 ```
 
 
@@ -1882,6 +2058,7 @@ export class CockpitComponent implements AfterViewInit {
 * **Goal:** We want to act as a "wrapper" component where the parent defines the HTML content inside the element, similar to how standard HTML tags like `<div>` work.
 * **Implementation:**
 1. **Parent Template (`app.component.html`):** Place HTML *inside* the custom tags.
+
 ```html
 <app-server-element *ngFor="let server of serverElements" [srvElement]="server">
     <p>
@@ -1890,14 +2067,17 @@ export class CockpitComponent implements AfterViewInit {
     </p>
 </app-server-element>
 
+
 ```
 
 
 2. **Child Template (`server-element.component.html`):** Use the `<ng-content>` hook.
+
 ```html
 <div class="panel-body">
     <ng-content></ng-content>
 </div>
+
 
 ```
 
@@ -1911,15 +2091,18 @@ export class CockpitComponent implements AfterViewInit {
 * **Reason:** That `<p>` tag is not part of the `ServerElementComponent`'s own *view*. It belongs to the *parent's* template and is merely projected in.
 * **Solution:** Use **`@ContentChild`**.
 * **Prerequisite:** In the parent HTML, add a local reference to the element being projected.
+
 ```html
 <app-server-element ...>
     <p #contentParagraph>...</p>
 </app-server-element>
 
+
 ```
 
 
 * **Child Logic:**
+
 ```typescript
 import { Component, ContentChild, ElementRef, AfterContentInit } from '@angular/core';
 
@@ -1932,6 +2115,7 @@ export class ServerElementComponent implements AfterContentInit {
       console.log('Text Content of Paragraph: ' + this.paragraph.nativeElement.textContent);
   }
 }
+
 
 ```
 
@@ -1956,15 +2140,19 @@ You have now completed the "Deep Dive" into Components.
 
 * **Standard:** `selector: 'app-dashboard'` (Element selector).
 * **Attribute Selector:** `selector: '[app-dashboard]'`. Useful when you want to turn a standard HTML element (like a `div`) into a component.
+
 ```html
 <div app-dashboard></div>
+
 
 ```
 
 
 * **Class Selector:** `selector: '.app-dashboard'`.
+
 ```html
 <div class="app-dashboard"></div>
+
 
 ```
 
@@ -1978,6 +2166,7 @@ You have now completed the "Deep Dive" into Components.
 * **Modern Way:** Use the `transform` config in the `@Input` decorator.
 * **Built-in Transforms:** Angular provides utilities like `booleanAttribute` and `numberAttribute`.
 * **Code Example:**
+
 ```typescript
 import { Component, Input, booleanAttribute, numberAttribute } from '@angular/core';
 
@@ -1990,6 +2179,7 @@ export class CardComponent {
   @Input({ transform: numberAttribute }) width!: number;
 }
 
+
 ```
 
 
@@ -1999,6 +2189,7 @@ export class CardComponent {
 * **Goal:** You want the component to listen to events on *itself* (the `<app-card>` tag), not just elements inside its template.
 * **Decorator:** `@HostListener`.
 * **Code Example:**
+
 ```typescript
 import { Component, HostListener } from '@angular/core';
 
@@ -2013,6 +2204,7 @@ export class CardComponent {
   }
 }
 
+
 ```
 
 
@@ -2022,6 +2214,7 @@ export class CardComponent {
 * **Goal:** You want to dynamically change a CSS class or attribute on the *host element* (`<app-card>`) based on data inside the component.
 * **Decorator:** `@HostBinding`.
 * **Code Example:**
+
 ```typescript
 import { Component, HostBinding } from '@angular/core';
 
@@ -2033,6 +2226,7 @@ export class CardComponent {
   @HostBinding('style.border') border = '1px solid red';
 }
 
+
 ```
 
 
@@ -2041,6 +2235,7 @@ export class CardComponent {
 
 * **New Syntax:** Instead of using `@HostListener` and `@HostBinding`, modern Angular prefers defining these in the `@Component` configuration.
 * **Code Example:**
+
 ```typescript
 @Component({
   selector: 'app-card',
@@ -2056,6 +2251,7 @@ export class CardComponent {
   onCardClick() { console.log('Clicked'); }
 }
 
+
 ```
 
 
@@ -2065,6 +2261,7 @@ export class CardComponent {
 * **Concept:** We know `[(ngModel)]` creates two-way binding. But how?
 * **The Pattern:** It is simply a combination of an **Input** named `x` and an **Output** named `xChange`.
 * **Manual Implementation:**
+
 ```typescript
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -2080,12 +2277,15 @@ export class SizerComponent {
   }
 }
 
+
 ```
 
 
 * **Usage in Parent:**
+
 ```html
 <app-sizer [(size)]="fontSizePx" />
+
 
 ```
 
@@ -2096,16 +2296,19 @@ export class SizerComponent {
 * **Goal:** Instead of projecting *all* content into one `<ng-content>`, you want to send the Header to one spot and the Body to another.
 * **Attribute:** Use the `select` attribute on `<ng-content>`.
 * **Parent HTML:**
+
 ```html
 <app-card>
   <header ngProjectAs="header">My Header</header>
   <div class="body">My Body Content</div>
 </app-card>
 
+
 ```
 
 
 * **Child Template (`card.component.html`):**
+
 ```html
 <div class="card">
   <div class="card-header">
@@ -2116,6 +2319,7 @@ export class SizerComponent {
   </div>
 </div>
 
+
 ```
 
 
@@ -2125,6 +2329,7 @@ export class SizerComponent {
 * **Single:** `@ContentChild` grabs the *first* matching projected element.
 * **Multiple:** `@ContentChildren` returns a `QueryList` of *all* matching elements.
 * **Usage:**
+
 ```typescript
 import { ContentChildren, QueryList, AfterContentInit } from '@angular/core';
 
@@ -2137,6 +2342,7 @@ export class CardComponent implements AfterContentInit {
   }
 }
 
+
 ```
 
 
@@ -2148,6 +2354,7 @@ export class CardComponent implements AfterContentInit {
 * **afterNextRender:** Runs once after the *next* change detection cycle.
 * **afterRender:** Runs after *every* change detection cycle.
 * **Code Example:**
+
 ```typescript
 import { Component, afterNextRender } from '@angular/core';
 
@@ -2159,6 +2366,7 @@ export class DemoComponent {
     });
   }
 }
+
 
 ```
 
@@ -2180,15 +2388,19 @@ export class DemoComponent {
 ### 2. Built-in Directives Recap (ngClass & ngStyle)
 
 * **ngClass:** Dynamically adds or removes CSS classes.
+
 ```html
 <div [ngClass]="{active: isActive}">...</div>
+
 
 ```
 
 
 * **ngStyle:** Dynamically applies inline styles.
+
 ```html
 <div [ngStyle]="{backgroundColor: getColor()}">...</div>
+
 
 ```
 
@@ -2204,6 +2416,7 @@ export class DemoComponent {
 
 * **Injection:** We need access to the element this directive sits on. We inject `ElementRef`.
 * **Implementation (Direct Access - *Not Recommended but taught for understanding*):**
+
 ```typescript
 import { Directive, ElementRef, OnInit } from '@angular/core';
 
@@ -2219,12 +2432,15 @@ export class BasicHighlightDirective implements OnInit {
   }
 }
 
+
 ```
 
 
 * **Usage:**
+
 ```html
 <p appBasicHighlight>Style me with basic directive!</p>
+
 
 ```
 
@@ -2235,6 +2451,7 @@ export class BasicHighlightDirective implements OnInit {
 * **Problem:** Accessing `nativeElement` directly is discouraged. It might break if the app runs in environments without a DOM (like **Service Workers** or **Angular Universal/SSR**).
 * **Solution:** Use Angular's `Renderer2` service. It acts as an abstraction layer.
 * **Code:**
+
 ```typescript
 import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
 
@@ -2251,6 +2468,7 @@ export class BetterHighlightDirective implements OnInit {
   }
 }
 
+
 ```
 
 
@@ -2260,6 +2478,7 @@ export class BetterHighlightDirective implements OnInit {
 * **Goal:** We want the background to change *only* when the mouse hovers over the element.
 * **Tool:** `@HostListener`. It lets the directive listen to events on the element it is attached to.
 * **Code:**
+
 ```typescript
 import { HostListener } from '@angular/core';
 
@@ -2272,6 +2491,7 @@ import { HostListener } from '@angular/core';
   this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'transparent');
 }
 
+
 ```
 
 
@@ -2282,6 +2502,7 @@ import { HostListener } from '@angular/core';
 * **Tool:** `@HostBinding`.
 * **How it works:** We define a property in the directive and tell Angular: "Please map this property to the `style.backgroundColor` of the host element."
 * **Code:**
+
 ```typescript
 import { HostBinding } from '@angular/core';
 
@@ -2298,6 +2519,7 @@ export class BetterHighlightDirective {
   }
 }
 
+
 ```
 
 
@@ -2307,6 +2529,7 @@ export class BetterHighlightDirective {
 * **Goal:** Don't hardcode "blue". Let the user choose the color.
 * **Method:** Directives can have `@Input`s just like components.
 * **Code:**
+
 ```typescript
 @Input() defaultColor: string = 'transparent';
 @Input() highlightColor: string = 'blue';
@@ -2321,14 +2544,17 @@ ngOnInit() {
   this.backgroundColor = this.highlightColor;
 }
 
+
 ```
 
 
 * **Usage in HTML:**
+
 ```html
 <p appBetterHighlight [defaultColor]="'yellow'" [highlightColor]="'red'">
   Hover me!
 </p>
+
 
 ```
 
@@ -2338,18 +2564,22 @@ ngOnInit() {
 
 * **Trick:** If you have one main property you want to bind, you can alias the `@Input` to share the same name as the directive selector. This makes the syntax cleaner.
 * **Code:**
+
 ```typescript
 // Alias the input 'appBetterHighlight' to the internal property 'highlightColor'
 @Input('appBetterHighlight') highlightColor: string = 'blue';
+
 
 ```
 
 
 * **Usage:**
+
 ```html
 <p [appBetterHighlight]="'red'" [defaultColor]="'yellow'">
    Cleaner Syntax
 </p>
+
 
 ```
 
@@ -2363,17 +2593,21 @@ ngOnInit() {
 * **Concept:** When you write `*ngIf="condition"`, Angular transforms it before rendering. The asterisk is just "syntactic sugar" (a shortcut).
 * **Transformation:** Angular wraps your element in an `<ng-template>`.
 * **The "Short" Way:**
+
 ```html
 <div *ngIf="isVisible">I am visible</div>
+
 
 ```
 
 
 * **The "Long" Way (What Angular actually sees):**
+
 ```html
 <ng-template [ngIf]="isVisible">
   <div>I am visible</div>
 </ng-template>
+
 
 ```
 
@@ -2391,6 +2625,7 @@ ngOnInit() {
 
 #### Step A: Setup
 
+
 ```typescript
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
@@ -2405,6 +2640,7 @@ export class UnlessDirective {
   ) {}
 }
 
+
 ```
 
 #### Step B: Logic (The Input Setter)
@@ -2412,6 +2648,7 @@ export class UnlessDirective {
 We need to run logic whenever the input condition changes. We use a **setter** for the input property.
 
 * *Note: The property name MUST match the selector name (`appUnless`) to use the star syntax (`*appUnless`).*
+
 
 ```typescript
   @Input() set appUnless(condition: boolean) {
@@ -2425,14 +2662,17 @@ We need to run logic whenever the input condition changes. We use a **setter** f
     }
   }
 
+
 ```
 
 #### Step C: Usage
+
 
 ```html
 <div *appUnless="onlyOdd">
   <h3>Value is Even!</h3>
 </div>
+
 
 ```
 
@@ -2446,12 +2686,14 @@ We need to run logic whenever the input condition changes. We use a **setter** f
 
 
 * **Code:**
+
 ```html
 <div [ngSwitch]="value">
   <p *ngSwitchCase="5">Value is 5</p>
   <p *ngSwitchCase="10">Value is 10</p>
   <p *ngSwitchDefault>Value is Default</p>
 </div>
+
 
 ```
 
@@ -2488,9 +2730,11 @@ You have now mastered Directives.
 
 
 * **Code Example:**
+
 ```html
 <p>Unformatted: {{ server.name }}</p>
 <p>Formatted: {{ server.name | uppercase }}</p>
+
 
 ```
 
@@ -2501,12 +2745,14 @@ You have now mastered Directives.
 * **Concept:** Pipes can accept arguments (parameters) to configure their output.
 * **Syntax:** Add a colon `:` followed by the value. You can add multiple parameters by adding more colons.
 * **Example (Date Pipe):**
+
 ```html
 <p>{{ server.started }}</p>
 
 <p>{{ server.started | date:'mediumDate' }}</p>
 
 <p>{{ server.started | date:'fullDate' | uppercase }}</p>
+
 
 ```
 
@@ -2516,8 +2762,10 @@ You have now mastered Directives.
 
 * **Concept:** You can apply multiple pipes to the same output. They are executed from left to right.
 * **Example:**
+
 ```html
 <p>{{ server.started | date:'fullDate' | uppercase }}</p>
+
 
 ```
 
@@ -2534,6 +2782,7 @@ You have now mastered Directives.
 
 
 * **Code (`shorten.pipe.ts`):**
+
 ```typescript
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -2550,6 +2799,7 @@ export class ShortenPipe implements PipeTransform {
   }
 }
 
+
 ```
 
 
@@ -2559,8 +2809,10 @@ export class ShortenPipe implements PipeTransform {
 
 
 * **Step 3: Use it:**
+
 ```html
 <p>{{ server.name | shorten:5 }}</p>
+
 
 ```
 
@@ -2570,6 +2822,7 @@ export class ShortenPipe implements PipeTransform {
 
 * **Goal:** Create a `filter` pipe to show only servers with a specific status (e.g., 'stable') when the user types in an input field.
 * **Code (Filter Pipe):**
+
 ```typescript
 @Pipe({ name: 'filter' })
 export class FilterPipe implements PipeTransform {
@@ -2587,15 +2840,18 @@ export class FilterPipe implements PipeTransform {
   }
 }
 
+
 ```
 
 
 * **Usage:**
+
 ```html
 <input type="text" [(ngModel)]="filteredStatus">
 <div *ngFor="let server of servers | filter:filteredStatus:'status'">
   ...
 </div>
+
 
 ```
 
@@ -2610,12 +2866,14 @@ export class FilterPipe implements PipeTransform {
 
 * **Fix (Impure Pipe):** You can force the pipe to run on every change detection cycle (keystroke, mouse move, etc.).
 * **Syntax:** `pure: false` in the decorator.
+
 ```typescript
 @Pipe({
   name: 'filter',
   pure: false // WARNING: High Performance Cost
 })
 export class FilterPipe { ... }
+
 
 ```
 
@@ -2632,6 +2890,7 @@ export class FilterPipe { ... }
 
 
 * **Code:**
+
 ```typescript
 // Component
 appStatus = new Promise((resolve, reject) => {
@@ -2640,11 +2899,14 @@ appStatus = new Promise((resolve, reject) => {
   }, 2000);
 });
 
+
 ```
+
 
 
 ```html
 <h2>App Status: {{ appStatus | async }}</h2>
+
 
 ```
 
@@ -2681,12 +2943,14 @@ You have learned how to format data for the user view.
 * **Goal:** Create a service that logs status changes to the console.
 * **Step 1:** Define the class. It doesn't strictly *need* a decorator if it doesn't receive other dependencies, but it's good practice.
 * **Code (`logging.service.ts`):**
+
 ```typescript
 export class LoggingService {
   logStatusChange(status: string) {
     console.log('A server status changed, new status: ' + status);
   }
 }
+
 
 ```
 
@@ -2698,6 +2962,7 @@ export class LoggingService {
 * **Step 2: Provide:** Add it to the `providers` array in the `@Component` decorator.
 * **Step 3: Inject:** Add it to the `constructor` with a type annotation.
 * **Code (`new-account.component.ts`):**
+
 ```typescript
 import { Component } from '@angular/core';
 import { LoggingService } from './logging.service';
@@ -2717,6 +2982,7 @@ export class NewAccountComponent {
   }
 }
 
+
 ```
 
 
@@ -2725,6 +2991,7 @@ export class NewAccountComponent {
 
 * **Goal:** Move the list of accounts (data) out of `AppComponent` and into `AccountsService` so it can be shared.
 * **Code (`accounts.service.ts`):**
+
 ```typescript
 export class AccountsService {
   accounts = [
@@ -2740,6 +3007,7 @@ export class AccountsService {
     this.accounts[id].status = newStatus;
   }
 }
+
 
 ```
 
@@ -2789,6 +3057,7 @@ export class AccountsService {
 
 
 * **Code (`accounts.service.ts`):**
+
 ```typescript
 import { Injectable } from '@angular/core';
 import { LoggingService } from './logging.service';
@@ -2804,6 +3073,7 @@ export class AccountsService {
   }
 }
 
+
 ```
 
 
@@ -2814,6 +3084,7 @@ export class AccountsService {
 * **Goal:** Trigger an action in `AccountComponent` (like an alert) when a button is clicked in `NewAccountComponent`, *without* chaining multiple `@Input` and `@Output` through the parent.
 * **Pattern:** Use an `EventEmitter` (or Subject) inside the Service.
 * **Step 1: Define the Event in Service:**
+
 ```typescript
 // accounts.service.ts
 import { EventEmitter } from '@angular/core';
@@ -2823,10 +3094,12 @@ export class AccountsService {
   // ... rest of code
 }
 
+
 ```
 
 
 * **Step 2: Emit the Event (Sender Component):**
+
 ```typescript
 // new-account.component.ts
 constructor(private accountsService: AccountsService) {}
@@ -2835,10 +3108,12 @@ onSetStatus(status: string) {
   this.accountsService.statusUpdated.emit(status);
 }
 
+
 ```
 
 
 * **Step 3: Subscribe to the Event (Receiver Component):**
+
 ```typescript
 // account.component.ts
 constructor(private accountsService: AccountsService) {
@@ -2846,6 +3121,7 @@ constructor(private accountsService: AccountsService) {
     (status: string) => alert('New Status: ' + status)
   );
 }
+
 
 ```
 
@@ -2861,11 +3137,13 @@ constructor(private accountsService: AccountsService) {
 
 
 * **Code:**
+
 ```typescript
 @Injectable({
   providedIn: 'root'
 })
 export class AccountsService { ... }
+
 
 ```
 
@@ -2875,6 +3153,7 @@ export class AccountsService { ... }
 
 * **Context:** Introduced in Angular 14. Allows injection without a constructor.
 * **Usage:**
+
 ```typescript
 import { inject } from '@angular/core';
 
@@ -2883,6 +3162,7 @@ export class AccountComponent {
 
   // Logic remains the same
 }
+
 
 ```
 
@@ -2931,6 +3211,7 @@ You have learned that the **Dependency Injector** is hierarchical.
 * **Behavior:** By default, when *any* event happens anywhere in the app, Angular checks the **entire** component tree from top to bottom.
 * **Performance:** Angular is very fast, so checking the whole tree usually happens in milliseconds. However, in large apps with huge lists or complex calculations, this can become a performance bottleneck.
 * **Code Example (Default):**
+
 ```typescript
 @Component({
   selector: 'app-default',
@@ -2942,6 +3223,7 @@ export class DefaultComponent {
   @Input() data: { name: string };
 }
 
+
 ```
 
 
@@ -2952,19 +3234,23 @@ To understand the next topic (`OnPush`), we must understand how JavaScript handl
 
 * **Reference Types:** Objects and Arrays are reference types.
 * **Mutation:** Changing a property inside an object does **not** change the reference (memory address) of the object itself.
+
 ```typescript
 let user = { name: 'Max' };
 user.name = 'Anna'; 
 // The object is MUTATED, but 'user' variable still points to the same memory address.
 
+
 ```
 
 
 * **Immutability:** Creating a new object instead of changing the old one.
+
 ```typescript
 let user = { name: 'Max' };
 user = { name: 'Anna' }; 
 // The reference CHANGED. 'user' points to a new memory address.
+
 
 ```
 
@@ -2975,6 +3261,7 @@ user = { name: 'Anna' };
 * **Goal:** Tell Angular to ignore this component (and its children) during the global check *unless* specific conditions are met.
 * **Setup:** Change the strategy in the `@Component` decorator.
 * **Code:**
+
 ```typescript
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
@@ -2987,6 +3274,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 export class OnPushComponent {
   @Input() data: { name: string };
 }
+
 
 ```
 
@@ -3010,6 +3298,7 @@ When a component uses `OnPush`, Angular will **skip** checking it unless:
 
 **Code Example of the Issue:**
 
+
 ```typescript
 // Parent Component (Default Strategy)
 @Component({
@@ -3028,6 +3317,7 @@ export class ParentComponent {
   }
 }
 
+
 ```
 
 ---
@@ -3037,6 +3327,7 @@ export class ParentComponent {
 * **Goal:** We want the `OnPush` child component to update when we change the data in the parent.
 * **Solution:** Instead of mutating the existing object, we must replace it with a **new object** (new memory reference).
 * **Code (Parent Component):**
+
 ```typescript
 changeName() {
   // BAD (Mutation - OnPush ignores this):
@@ -3046,6 +3337,7 @@ changeName() {
   // We create a new object, copying old properties (...) and overriding name
   this.user = { ...this.user, name: 'Anna' };
 }
+
 
 ```
 
@@ -3060,6 +3352,7 @@ changeName() {
 * **Usage:** Tells Angular, "The next time you run a check cycle, please check *me* (this component), even if my Inputs didn't change."
 * **Common Use Case:** When using `OnPush` but updating data via an Observable subscription inside the component (not via Async pipe).
 * **Code:**
+
 ```typescript
 import { Component, ChangeDetectorRef, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
@@ -3085,6 +3378,7 @@ export class ManualComponent implements OnInit {
   }
 }
 
+
 ```
 
 
@@ -3101,6 +3395,7 @@ export class ManualComponent implements OnInit {
 
 
 * **Code:**
+
 ```typescript
 constructor(private cdRef: ChangeDetectorRef) {
   // 1. Stop checking this component automatically
@@ -3111,6 +3406,7 @@ onHeavyCalculationFinished() {
   // 2. We finished complex logic, now update the UI once
   this.cdRef.detectChanges();
 }
+
 
 ```
 
@@ -3123,6 +3419,7 @@ onHeavyCalculationFinished() {
 * **Solution:** Use `NgZone.runOutsideAngular`.
 * **Concept:** Run the code *outside* of Angular's Zone. Angular will not know the event happened, so it won't trigger a check.
 * **Code:**
+
 ```typescript
 import { Component, NgZone, OnInit } from '@angular/core';
 
@@ -3153,6 +3450,7 @@ export class ScrollComponent implements OnInit {
 
   showButton = false;
 }
+
 
 ```
 
@@ -3192,6 +3490,7 @@ You have learned how to take control of Angular's update cycle.
 * **Context:** You have already used Observables without knowing it.
 * **Example:** `params` in ActivatedRoute.
 * **Code:**
+
 ```typescript
 ngOnInit() {
   // Angular "pushes" new data here whenever the URL parameter changes
@@ -3199,6 +3498,7 @@ ngOnInit() {
     console.log(params['id']);
   });
 }
+
 
 ```
 
@@ -3210,6 +3510,7 @@ ngOnInit() {
 * **Function:** We use the `Observable` constructor (or creation functions like `interval`).
 * **The `observer` argument:** The function inside receives an `observer`. We use this object to push data.
 * **Code:**
+
 ```typescript
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -3248,6 +3549,7 @@ export class HomeComponent implements OnInit {
   }
 }
 
+
 ```
 
 
@@ -3266,6 +3568,7 @@ export class HomeComponent implements OnInit {
 * **Step 1:** Store the subscription in a variable of type `Subscription`.
 * **Step 2:** Call `.unsubscribe()` in `ngOnDestroy`.
 * **Code:**
+
 ```typescript
 import { Subscription } from 'rxjs';
 
@@ -3287,6 +3590,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 }
 
+
 ```
 
 
@@ -3304,6 +3608,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 * **Goal:** Transform the data emitted by the Observable into a new format.
 * **Scenario:** Our custom interval emits `0, 1, 2...`. We want to transform it to return a string: `"Round: 0", "Round: 1"`.
 * **Code:**
+
 ```typescript
 import { map } from 'rxjs/operators';
 
@@ -3316,6 +3621,7 @@ this.firstObsSubscription = customIntervalObservable.pipe(
   console.log(data); // Output: "Round: 1", "Round: 2"...
 });
 
+
 ```
 
 
@@ -3325,6 +3631,7 @@ this.firstObsSubscription = customIntervalObservable.pipe(
 * **Goal:** Only allow certain data to pass through.
 * **Scenario:** We only want to log the data if the number is greater than 0.
 * **Code:**
+
 ```typescript
 import { filter, map } from 'rxjs/operators';
 
@@ -3338,6 +3645,7 @@ this.firstObsSubscription = customIntervalObservable.pipe(
 ).subscribe(data => {
   console.log(data);
 });
+
 
 ```
 
@@ -3358,6 +3666,7 @@ this.firstObsSubscription = customIntervalObservable.pipe(
 
 * **Scenario:** In the previous Service section, we used `new EventEmitter<string>()` in our `UserService` to notify when a user was activated. We will replace this with a Subject.
 * **Step 1: The Service (Create Subject):**
+
 ```typescript
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs'; // Import from rxjs, NOT @angular/core
@@ -3368,10 +3677,12 @@ export class UserService {
   activatedSubject = new Subject<boolean>();         // NEW WAY
 }
 
+
 ```
 
 
 * **Step 2: The Emitter (Using .next):**
+
 ```typescript
 // In user.component.ts
 onActivate() {
@@ -3379,10 +3690,12 @@ onActivate() {
   this.userService.activatedSubject.next(true);    // NEW
 }
 
+
 ```
 
 
 * **Step 3: The Subscriber (Using .subscribe):**
+
 ```typescript
 // In app.component.ts
 ngOnInit() {
@@ -3399,6 +3712,7 @@ ngOnDestroy() {
   this.sub.unsubscribe();
 }
 
+
 ```
 
 
@@ -3414,9 +3728,11 @@ ngOnDestroy() {
 
 
 * **Code:**
+
 ```typescript
 // Initial value is 'false'
 activatedSubject = new BehaviorSubject<boolean>(false); 
+
 
 ```
 
@@ -3442,6 +3758,7 @@ activatedSubject = new BehaviorSubject<boolean>(false);
 
 
 * **Code Example:**
+
 ```typescript
 import { map } from 'rxjs/operators';
 
@@ -3450,6 +3767,7 @@ myObservable.pipe(
     return 'Transformed Data: ' + data;
   })
 ).subscribe(result => console.log(result));
+
 
 ```
 
@@ -3463,12 +3781,14 @@ myObservable.pipe(
 
 
 * **Code Example:**
+
 ```typescript
 import { filter } from 'rxjs/operators';
 
 myObservable.pipe(
   filter(num => num > 0) // Only allow positive numbers
 ).subscribe(result => console.log(result));
+
 
 ```
 
@@ -3483,6 +3803,7 @@ myObservable.pipe(
 
 
 * **Code Example:**
+
 ```typescript
 import { tap, map } from 'rxjs/operators';
 
@@ -3491,6 +3812,7 @@ myObservable.pipe(
   map(data => data * 2),
   tap(data => console.log('Modified Data: ' + data)) // Spy again
 ).subscribe();
+
 
 ```
 
@@ -3505,6 +3827,7 @@ myObservable.pipe(
 
 
 * **Code Example:**
+
 ```typescript
 import { take } from 'rxjs/operators';
 
@@ -3515,6 +3838,7 @@ myIntervalObservable.pipe(
   console.log(data); // Prints once, then closes connection
 });
 
+
 ```
 
 
@@ -3524,6 +3848,7 @@ myIntervalObservable.pipe(
 * **Explanation:** It waits for a specific pause in emissions before passing the latest value. If a new value arrives before the timer runs out, the timer resets.
 * **When to Use:** **Forms and Search Inputs**. If a user types "Apple" quickly, you don't want to send 5 API requests ("A", "Ap", "App"...). You want to wait until they stop typing for 500ms and send only one request for "Apple".
 * **Code Example:**
+
 ```typescript
 import { debounceTime } from 'rxjs/operators';
 
@@ -3532,6 +3857,7 @@ searchParam.valueChanges.pipe(
 ).subscribe(term => {
   // Send HTTP request
 });
+
 
 ```
 
@@ -3542,12 +3868,14 @@ searchParam.valueChanges.pipe(
 * **Explanation:** It blocks a value if it is exactly the same as the *previous* value.
 * **When to Use:** Often combined with `debounceTime` in search forms. If a user types "Apple", pauses (request sent), types "Apples", then deletes "s" (back to "Apple"), you might not want to send the same request again.
 * **Code Example:**
+
 ```typescript
 import { distinctUntilChanged } from 'rxjs/operators';
 
 myObservable.pipe(
   distinctUntilChanged()
 ).subscribe();
+
 
 ```
 
@@ -3558,6 +3886,7 @@ myObservable.pipe(
 * **Explanation:** It intercepts an error in the Observable chain. You can then log the error and return a "fallback" Observable (like a default value) so the stream doesn't crash completely.
 * **When to Use:** **HTTP Requests**. If the server returns a 500 error, you don't want the app to break. You want to catch it and show a user-friendly message.
 * **Code Example:**
+
 ```typescript
 import { catchError } from 'rxjs/operators';
 import { of, throwError } from 'rxjs';
@@ -3570,6 +3899,7 @@ http.get('...').pipe(
     // return throwError(() => new Error(errorRes));
   })
 ).subscribe();
+
 
 ```
 
@@ -3591,6 +3921,7 @@ Max emphasizes these three operators heavily in the HTTP and Authentication sect
 
 
 * **Code Example:**
+
 ```typescript
 import { switchMap } from 'rxjs/operators';
 
@@ -3600,6 +3931,7 @@ route.params.pipe(
     return this.http.get('/user/' + params['id']);
   })
 ).subscribe(userData => { ... });
+
 
 ```
 
@@ -3615,6 +3947,7 @@ route.params.pipe(
 
 
 * **Code Example:**
+
 ```typescript
 import { exhaustMap, take } from 'rxjs/operators';
 
@@ -3625,6 +3958,7 @@ this.authService.user.pipe(
     return this.http.get('...'); 
   })
 ).subscribe();
+
 
 ```
 
@@ -3638,12 +3972,14 @@ this.authService.user.pipe(
 
 
 * **Code Example:**
+
 ```typescript
 import { concatMap } from 'rxjs/operators';
 
 clicks.pipe(
   concatMap(click => this.http.post('/save', click))
 ).subscribe();
+
 
 ```
 
@@ -3666,6 +4002,7 @@ Before you can use HTTP, you must unlock the capability in your app.
 
 * **Modern Approach (Standalone):**
 In `app.config.ts` (or `main.ts`), add `provideHttpClient()`.
+
 ```typescript
 import { provideHttpClient } from '@angular/common/http';
 
@@ -3676,17 +4013,20 @@ export const appConfig: ApplicationConfig = {
   ]
 };
 
+
 ```
 
 
 * **Legacy Approach (Modules):**
 In `app.module.ts`, import `HttpClientModule`.
+
 ```typescript
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [HttpClientModule, ...]
 })
 export class AppModule {}
+
 
 ```
 
@@ -3696,8 +4036,10 @@ export class AppModule {}
 
 * **Goal:** Save a user's post (Title + Content) to the server.
 * **Step 1: Inject HttpClient:**
+
 ```typescript
 constructor(private http: HttpClient) {}
+
 
 ```
 
@@ -3708,6 +4050,7 @@ constructor(private http: HttpClient) {}
 
 
 * **Code:**
+
 ```typescript
 onCreatePost(postData: { title: string; content: string }) {
   this.http
@@ -3720,6 +4063,7 @@ onCreatePost(postData: { title: string; content: string }) {
     });
 }
 
+
 ```
 
 
@@ -3729,6 +4073,7 @@ onCreatePost(postData: { title: string; content: string }) {
 * **Goal:** Fetch all saved posts from the server.
 * **Method:** `get(url)`.
 * **Code:**
+
 ```typescript
 private fetchPosts() {
   this.http
@@ -3738,6 +4083,7 @@ private fetchPosts() {
     });
 }
 
+
 ```
 
 
@@ -3745,11 +4091,13 @@ private fetchPosts() {
 ### 5. Transforming Data with the `map` Operator
 
 * **Problem:** Firebase returns data in a confusing format. It returns an object where keys are IDs:
+
 ```json
 {
   "-N7a8s9d": { "title": "First", "content": "..." },
   "-N7b9s1a": { "title": "Second", "content": "..." }
 }
+
 
 ```
 
@@ -3757,6 +4105,7 @@ private fetchPosts() {
 * **Goal:** We want a clean Array: `[{ id: '-N7...', title: 'First' }, ...]`.
 * **Solution:** Use the RxJS `map` operator to transform the response *before* it reaches the subscription.
 * **Code:**
+
 ```typescript
 import { map } from 'rxjs/operators';
 
@@ -3779,6 +4128,7 @@ this.http
     this.loadedPosts = posts;
   });
 
+
 ```
 
 
@@ -3789,6 +4139,7 @@ this.http
 * **Syntax:** `http.get<Type>(url)`.
 * **Benefit:** TypeScript now knows the shape of the response, providing autocomplete support.
 * **Code:**
+
 ```typescript
 // Define the interface
 export interface Post {
@@ -3801,6 +4152,7 @@ export interface Post {
 this.http.get<{ [key: string]: Post }>('...url')
   .pipe(...)
   .subscribe(...);
+
 
 ```
 
@@ -3817,15 +4169,18 @@ this.http.get<{ [key: string]: Post }>('...url')
 
 
 *Code (Service):*
+
 ```typescript
 fetchPosts() {
   return this.http.get(...).pipe(map(...));
 }
 
+
 ```
 
 
 *Code (Component):*
+
 ```typescript
 ngOnInit() {
   this.postsService.fetchPosts().subscribe(posts => {
@@ -3833,6 +4188,7 @@ ngOnInit() {
     this.isFetching = false;
   });
 }
+
 
 ```
 
@@ -3850,6 +4206,7 @@ ngOnInit() {
 
 
 * **Template Logic:**
+
 ```html
 <p *ngIf="isFetching">Loading...</p>
 
@@ -3857,10 +4214,12 @@ ngOnInit() {
   <li *ngFor="let post of loadedPosts">...</li>
 </ul>
 
+
 ```
 
 
 * **Code (Component):**
+
 ```typescript
 onFetchPosts() {
   this.isFetching = true; // Start loading
@@ -3869,6 +4228,7 @@ onFetchPosts() {
     this.loadedPosts = posts;
   });
 }
+
 
 ```
 
@@ -3879,6 +4239,7 @@ onFetchPosts() {
 * **Scenario:** The internet cuts out, or the database permission is denied. The HTTP request fails.
 * **Mechanism:** The `.subscribe()` method takes a second argument: the error handler.
 * **Code:**
+
 ```typescript
 onFetchPosts() {
   this.postsService.fetchPosts().subscribe({
@@ -3893,6 +4254,7 @@ onFetchPosts() {
   });
 }
 
+
 ```
 
 
@@ -3902,6 +4264,7 @@ onFetchPosts() {
 * **Problem:** If you trigger a request from a Service (e.g., creating a post in the background), the Component might not be subscribed to that specific Observable. How does the Service tell the Component "Something went wrong, show an alert"?
 * **Solution:** Create an `error` Subject in the Service.
 * **Service Code:**
+
 ```typescript
 error = new Subject<string>();
 
@@ -3916,16 +4279,19 @@ createAndStorePost(title: string, content: string) {
     });
 }
 
+
 ```
 
 
 * **Component Code:**
+
 ```typescript
 ngOnInit() {
   this.errorSub = this.postsService.error.subscribe(errorMessage => {
     this.error = errorMessage; // Update UI
   });
 }
+
 
 ```
 
@@ -3937,6 +4303,7 @@ ngOnInit() {
 * **Operator:** `catchError` from `rxjs/operators`.
 * **Requirement:** You must return an Observable (usually `throwError`) so the subscription chain continues to the error block.
 * **Code:**
+
 ```typescript
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -3952,6 +4319,7 @@ fetchPosts() {
     );
 }
 
+
 ```
 
 
@@ -3962,6 +4330,7 @@ fetchPosts() {
 * **Class:** `HttpHeaders`.
 * **Immutability:** Headers are immutable. You cannot do `headers.append()`. You must assign the result to a variable: `headers = headers.append()`.
 * **Code:**
+
 ```typescript
 import { HttpHeaders } from '@angular/common/http';
 
@@ -3970,6 +4339,7 @@ fetchPosts() {
     headers: new HttpHeaders({ 'Custom-Header': 'Hello' })
   });
 }
+
 
 ```
 
@@ -3980,6 +4350,7 @@ fetchPosts() {
 * **Goal:** Change the URL dynamically (e.g., `.../posts.json?print=pretty&key=value`).
 * **Class:** `HttpParams`.
 * **Code:**
+
 ```typescript
 import { HttpParams } from '@angular/common/http';
 
@@ -3992,6 +4363,7 @@ return this.http.get('url', {
   params: searchParams // Result: url?print=pretty&custom=key
 });
 
+
 ```
 
 
@@ -4001,6 +4373,7 @@ return this.http.get('url', {
 * **Problem:** By default, Angular extracts the JSON body of the response and gives you *only* that. Sometimes you need the Status Code (200, 404) or the full Headers.
 * **Solution:** Set the `observe` option to `'response'`.
 * **Code:**
+
 ```typescript
 this.http.get('url', {
   observe: 'response' // Default is 'body'
@@ -4009,6 +4382,7 @@ this.http.get('url', {
   console.log(response.status); // 200
   console.log(response.body);   // The data
 });
+
 
 ```
 
@@ -4020,12 +4394,14 @@ this.http.get('url', {
 * **Solution:** Set the `responseType` option.
 * **Options:** `'json'` (default), `'text'`, `'blob'` (files), `'arraybuffer'`.
 * **Code:**
+
 ```typescript
 this.http.get('url', {
   responseType: 'text'
 }).subscribe(data => {
   console.log(data); // "data" is now a raw string
 });
+
 
 ```
 
@@ -4047,6 +4423,7 @@ this.http.get('url', {
 * **Structure:** An interceptor is a service implementing the `HttpInterceptor` interface.
 * **Method:** It requires one method: `intercept(req, next)`.
 * **Code (`auth-interceptor.service.ts`):**
+
 ```typescript
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -4062,6 +4439,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   }
 }
 
+
 ```
 
 
@@ -4072,6 +4450,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 * **Solution:** You must **clone** the request and modify the clone.
 * **Scenario:** Add a header `Auth: xyz` to every request.
 * **Code:**
+
 ```typescript
 intercept(req: HttpRequest<any>, next: HttpHandler) {
   // Clone the request and overwrite/add headers
@@ -4082,6 +4461,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler) {
   // Pass the MODIFIED request forward
   return next.handle(modifiedRequest);
 }
+
 
 ```
 
@@ -4094,6 +4474,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler) {
 * **Token:** `HTTP_INTERCEPTORS`.
 * **Multi:** We must set `multi: true` so Angular knows we can have *multiple* interceptors, not just one.
 * **Code:**
+
 ```typescript
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth-interceptor.service';
@@ -4109,6 +4490,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 })
 export class AppModule {}
 
+
 ```
 
 
@@ -4118,6 +4500,7 @@ export class AppModule {}
 * **Context:** In modern Angular (15+), interceptors can be simple functions instead of classes.
 * **Location:** `app.config.ts` (or `main.ts`).
 * **Code:**
+
 ```typescript
 // logging.interceptor.ts (The Function)
 import { HttpInterceptorFn } from '@angular/common/http';
@@ -4138,6 +4521,7 @@ export const appConfig: ApplicationConfig = {
   ]
 };
 
+
 ```
 
 
@@ -4147,6 +4531,7 @@ export const appConfig: ApplicationConfig = {
 * **Goal:** Modify or read the response globally (e.g., logging every incoming event).
 * **Mechanism:** The `next.handle(req)` method returns an Observable. We can use the `.pipe()` operator on it just like any other Observable.
 * **Code:**
+
 ```typescript
 import { tap } from 'rxjs/operators';
 import { HttpEventType } from '@angular/common/http';
@@ -4162,6 +4547,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler) {
   );
 }
 
+
 ```
 
 
@@ -4171,11 +4557,13 @@ intercept(req: HttpRequest<any>, next: HttpHandler) {
 * **Scenario:** You have a `LoggingInterceptor` and an `AuthInterceptor`.
 * **Order:** Angular executes them in the order you provide them in the `providers` array (or `withInterceptors` array).
 * **Example:**
+
 ```typescript
 providers: [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },    // Runs 1st
   { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }  // Runs 2nd
 ]
+
 
 ```
 
@@ -4215,6 +4603,7 @@ You have now mastered backend communication.
 * **Requirement:** To use TD forms, you **must** import `FormsModule` in your Module or Component imports.
 * **Location:** `app.module.ts` (Legacy) or the Component's `imports: []` (Standalone).
 * **Code:**
+
 ```typescript
 import { FormsModule } from '@angular/forms';
 
@@ -4222,6 +4611,7 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule, ...]
 })
 export class AppModule {}
+
 
 ```
 
@@ -4239,6 +4629,7 @@ export class AppModule {}
 
 **Code:**
 
+
 ```html
 <form>
   <label>Username</label>
@@ -4249,6 +4640,7 @@ export class AppModule {}
   
   <button type="submit">Submit</button>
 </form>
+
 
 ```
 
@@ -4264,15 +4656,18 @@ export class AppModule {}
 
 **Code:**
 
+
 ```html
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
   ... inputs ...
   <button type="submit">Submit</button>
 </form>
 
+
 ```
 
 **TypeScript Logic:**
+
 
 ```typescript
 import { Component } from '@angular/core';
@@ -4286,6 +4681,7 @@ export class AppComponent {
     console.log(form.value.username);
   }
 }
+
 
 ```
 
@@ -4315,6 +4711,7 @@ When you log the `form` object (of type `NgForm`) to the console, you see many p
 
 **Code:**
 
+
 ```html
 <input 
   type="email" 
@@ -4322,6 +4719,7 @@ When you log the `form` object (of type `NgForm`) to the console, you see many p
   ngModel 
   required 
   email>
+
 
 ```
 
@@ -4337,6 +4735,7 @@ When you log the `form` object (of type `NgForm`) to the console, you see many p
 
 **Code:**
 
+
 ```html
 <label>Email</label>
 <input 
@@ -4350,6 +4749,7 @@ When you log the `form` object (of type `NgForm`) to the console, you see many p
 <p class="help-block" *ngIf="!emailCtrl.valid && emailCtrl.touched">
   Please enter a valid email!
 </p>
+
 
 ```
 
@@ -4365,11 +4765,13 @@ When you log the `form` object (of type `NgForm`) to the console, you see many p
 
 **CSS Code:**
 
+
 ```css
 /* If input is invalid AND touched, make border red */
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
 
 ```
 
@@ -4381,6 +4783,7 @@ input.ng-invalid.ng-touched {
 
 **Code:**
 
+
 ```html
 <select name="secret" [ngModel]="'pet'">
   <option value="pet">Your first Pet?</option>
@@ -4389,6 +4792,7 @@ input.ng-invalid.ng-touched {
 
 <textarea name="questionAnswer" [(ngModel)]="answer"></textarea>
 <p>Your reply: {{ answer }}</p> 
+
 
 ```
 
@@ -4400,6 +4804,7 @@ input.ng-invalid.ng-touched {
 
 **Code:**
 
+
 ```html
 <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
   <input name="username" ngModel required>
@@ -4407,6 +4812,7 @@ input.ng-invalid.ng-touched {
 </div>
 
 <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>
+
 
 ```
 
@@ -4428,6 +4834,7 @@ input.ng-invalid.ng-touched {
 
 
 **Code (TypeScript):**
+
 
 ```typescript
 @ViewChild('f') signupForm: NgForm; // Access form in TS
@@ -4455,6 +4862,7 @@ onSuggestUserName() {
   });
 }
 
+
 ```
 
 ### 12. Resetting the Form
@@ -4464,6 +4872,7 @@ onSuggestUserName() {
 
 **Code:**
 
+
 ```typescript
 onSubmit() {
   // 1. Use the data
@@ -4472,6 +4881,7 @@ onSubmit() {
   // 2. Clear form and validation state
   this.signupForm.reset();
 }
+
 
 ```
 
@@ -4484,6 +4894,7 @@ onSubmit() {
 
 **Code:**
 
+
 ```typescript
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -4491,6 +4902,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [ReactiveFormsModule, ...]
 })
 export class AppModule {}
+
 
 ```
 
@@ -4510,6 +4922,7 @@ export class AppModule {}
 
 
 **Code (TypeScript):**
+
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -4534,6 +4947,7 @@ export class AppComponent implements OnInit {
   }
 }
 
+
 ```
 
 ### 15. Syncing HTML with the TypeScript Form
@@ -4547,6 +4961,7 @@ export class AppComponent implements OnInit {
 
 **Code (HTML):**
 
+
 ```html
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
   
@@ -4559,6 +4974,7 @@ export class AppComponent implements OnInit {
   <button type="submit">Submit</button>
 </form>
 
+
 ```
 
 ### 16. Validation & Error Messages
@@ -4568,6 +4984,7 @@ export class AppComponent implements OnInit {
 
 **Code:**
 
+
 ```html
 <input type="text" formControlName="username">
 
@@ -4576,6 +4993,7 @@ export class AppComponent implements OnInit {
   class="help-block">
   Please enter a valid username!
 </span>
+
 
 ```
 
@@ -4587,6 +5005,7 @@ export class AppComponent implements OnInit {
 
 **Code (TS):**
 
+
 ```typescript
 this.signupForm = new FormGroup({
   'userData': new FormGroup({ // Nested Group
@@ -4596,9 +5015,11 @@ this.signupForm = new FormGroup({
   'gender': new FormControl('male')
 });
 
+
 ```
 
 **Code (HTML):**
+
 
 ```html
 <form [formGroup]="signupForm" ...>
@@ -4607,6 +5028,7 @@ this.signupForm = new FormGroup({
   </div>
   ...
 </form>
+
 
 ```
 
@@ -4617,6 +5039,7 @@ this.signupForm = new FormGroup({
 
 **Step 1: Define Array in TS**
 
+
 ```typescript
 import { FormArray } from '@angular/forms';
 
@@ -4625,9 +5048,11 @@ this.signupForm = new FormGroup({
   'hobbies': new FormArray([]) 
 });
 
+
 ```
 
 **Step 2: Add Control Method**
+
 
 ```typescript
 onAddHobby() {
@@ -4636,12 +5061,14 @@ onAddHobby() {
   (<FormArray>this.signupForm.get('hobbies')).push(control);
 }
 
+
 ```
 
 **Step 3: Sync HTML (Looping)**
 
 * **Note:** We loop over `controls` inside the FormArray.
 * **Access:** `formArrayName="hobbies"` on the wrapper. `[formControlName]="i"` on the input (using index).
+
 
 ```html
 <div formArrayName="hobbies">
@@ -4653,15 +5080,18 @@ onAddHobby() {
   </div>
 </div>
 
+
 ```
 
 **Step 4: Helper Getter (Required for Modern Angular strict mode)**
 Trying to loop directly over `signupForm.get('hobbies').controls` in the HTML often causes type errors. It's best to create a getter.
 
+
 ```typescript
 getControls() {
   return (<FormArray>this.signupForm.get('hobbies')).controls;
 }
+
 
 ```
 
@@ -4679,6 +5109,7 @@ getControls() {
 
 **Code (TypeScript):**
 
+
 ```typescript
 // Define forbidden names
 forbiddenUsernames = ['Chris', 'Anna'];
@@ -4694,11 +5125,13 @@ forbiddenNames(control: FormControl): {[s: string]: boolean} {
   return null;
 }
 
+
 ```
 
 **Usage in OnInit:**
 
 * **Note:** We must use `.bind(this)` because inside the validator, `this` refers to the control, not the component class (so `this.forbiddenUsernames` would be undefined without binding).
+
 
 ```typescript
 this.signupForm = new FormGroup({
@@ -4709,6 +5142,7 @@ this.signupForm = new FormGroup({
   // ...
 });
 
+
 ```
 
 ### 20. Using Error Codes in HTML
@@ -4718,6 +5152,7 @@ this.signupForm = new FormGroup({
 
 **Code (HTML):**
 
+
 ```html
 <span *ngIf="signupForm.get('username').hasError('nameIsForbidden')">
   This name is forbidden!
@@ -4725,6 +5160,7 @@ this.signupForm = new FormGroup({
 <span *ngIf="signupForm.get('username').hasError('required')">
   Name is required!
 </span>
+
 
 ```
 
@@ -4735,6 +5171,7 @@ this.signupForm = new FormGroup({
 * **Status:** While waiting, the form status is `'PENDING'`.
 
 **Code (TypeScript):**
+
 
 ```typescript
 import { Observable } from 'rxjs';
@@ -4754,11 +5191,13 @@ forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
   return promise;
 }
 
+
 ```
 
 **Usage in OnInit:**
 
 * **Argument 3:** Async validators go in the **third argument** of the `FormControl` constructor.
+
 
 ```typescript
 this.signupForm = new FormGroup({
@@ -4768,6 +5207,7 @@ this.signupForm = new FormGroup({
     this.forbiddenEmails // Arg 3: Async Validators
   )
 });
+
 
 ```
 
@@ -4782,6 +5222,7 @@ this.signupForm = new FormGroup({
 
 **Code (ngOnInit):**
 
+
 ```typescript
 // Log every keystroke in the form
 this.signupForm.valueChanges.subscribe(
@@ -4793,6 +5234,7 @@ this.signupForm.statusChanges.subscribe(
   (status) => console.log(status)
 );
 
+
 ```
 
 ### 23. Setting & Patching Values (Reactive)
@@ -4801,6 +5243,7 @@ this.signupForm.statusChanges.subscribe(
 * **Difference:** We call these methods directly on the `FormGroup` property.
 
 **Code:**
+
 
 ```typescript
 // Update specific field
@@ -4812,6 +5255,7 @@ this.signupForm.patchValue({
 
 // Reset Form
 this.signupForm.reset();
+
 
 ```
 
@@ -4833,6 +5277,7 @@ You have now mastered Forms in Angular.
 * **Goal:** Turn the application into a Single Page Application (SPA). Instead of reloading the page to show a new view, Angular swaps the components in and out.
 * **Setup:** You need the `Router` setup in your main configuration.
 * **Code (app.routes.ts):** defines the map between URL paths and Components.
+
 ```typescript
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -4843,10 +5288,12 @@ export const routes: Routes = [
   { path: 'users', component: UsersComponent } // localhost:4200/users
 ];
 
+
 ```
 
 
 * **Code (app.config.ts / main.ts):**
+
 ```typescript
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -4854,6 +5301,7 @@ import { routes } from './app.routes';
 bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 });
+
 
 ```
 
@@ -4863,10 +5311,12 @@ bootstrapApplication(AppComponent, {
 
 * **Concept:** This is a placeholder directive. It marks the spot in your HTML where Angular should insert the component matching the current URL.
 * **Usage:** Usually found in `app.component.html`.
+
 ```html
 <app-header></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
+
 
 ```
 
@@ -4877,10 +5327,12 @@ bootstrapApplication(AppComponent, {
 * **Problem:** If you use standard HTML `<a href="/users">`, the browser will reload the entire app.
 * **Solution:** Use the `routerLink` directive. It tells Angular to intercept the click and update the URL internally.
 * **Code:**
+
 ```html
 <a routerLink="/users">Users</a>
 
 <a [routerLink]="['/users', userId]">User Profile</a>
+
 
 ```
 
@@ -4892,6 +5344,7 @@ bootstrapApplication(AppComponent, {
 * **Directive:** `routerLinkActive="className"`.
 * **Configuration:** By default, it matches partially (e.g., `/users` also matches `/users/10`). Use `[routerLinkActiveOptions]="{exact: true}"` for exact matching (essential for the Home `/` link).
 * **Code:**
+
 ```html
 <li routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
   <a routerLink="/">Home</a>
@@ -4899,6 +5352,7 @@ bootstrapApplication(AppComponent, {
 <li routerLinkActive="active-link">
   <a routerLink="/users">Users</a>
 </li>
+
 
 ```
 
@@ -4912,6 +5366,7 @@ bootstrapApplication(AppComponent, {
 * *Config:* To navigate relatively inside a component function, you need `ActivatedRoute`.
 
 
+
 ```typescript
 constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -4919,6 +5374,7 @@ onReload() {
   // Goes to /current-path/servers
   this.router.navigate(['servers'], { relativeTo: this.route });
 }
+
 
 ```
 
@@ -4928,16 +5384,20 @@ onReload() {
 
 * **Goal:** Load a specific user, e.g., `/users/5`.
 * **Route Definition:** Use a colon `:`.
+
 ```typescript
 { path: 'users/:id', component: UserComponent }
+
 
 ```
 
 
 * **Fetching the Parameter (Snapshot):**
+
 ```typescript
 // Only works if you land on the page once and don't change params while staying on same component
 const id = this.route.snapshot.params['id'];
+
 
 ```
 
@@ -4946,10 +5406,12 @@ const id = this.route.snapshot.params['id'];
 * *Best Practice:* If you are on `/users/5` and click a link to `/users/10`, the component is *not* destroyed and recreated. The snapshot won't change. You MUST subscribe.
 
 
+
 ```typescript
 this.route.params.subscribe(params => {
   this.id = params['id']; // Updates whenever URL changes
 });
+
 
 ```
 
@@ -4959,6 +5421,7 @@ this.route.params.subscribe(params => {
 
 * **Goal:** Optional data like `/servers?mode=edit#loading`.
 * **Passing them (HTML):**
+
 ```html
 <a [routerLink]="['/servers']" 
    [queryParams]="{mode: 'edit'}" 
@@ -4966,20 +5429,24 @@ this.route.params.subscribe(params => {
    Edit Server
 </a>
 
+
 ```
 
 
 * **Passing them (Code):**
+
 ```typescript
 this.router.navigate(['/servers'], {
   queryParams: { mode: 'edit' },
   fragment: 'loading'
 });
 
+
 ```
 
 
 * **Retrieving them:**
+
 ```typescript
 // Snapshot
 this.mode = this.route.snapshot.queryParams['mode'];
@@ -4989,6 +5456,7 @@ this.fragment = this.route.snapshot.fragment;
 this.route.queryParams.subscribe(params => { ... });
 this.route.fragment.subscribe(frag => { ... });
 
+
 ```
 
 ### 8. Nested Routes (Child Routes)
@@ -4997,6 +5465,7 @@ this.route.fragment.subscribe(frag => { ... });
 * **Concept:** Routes can have **children**.
 * **Step 1: Configuration (`app.routes.ts`):**
 Use the `children` array inside a route definition.
+
 ```typescript
 const routes: Routes = [
   { 
@@ -5013,12 +5482,14 @@ const routes: Routes = [
   }
 ];
 
+
 ```
 
 
 * **Step 2: The Second `<router-outlet>`:**
 Since these are *child* routes, they will NOT load in the main `app.component.html` outlet. They load inside the **Parent Component** (`servers.component.html`).
 **Code (`servers.component.html`):**
+
 ```html
 <div class="row">
   <div class="col-xs-12 col-sm-4">
@@ -5028,6 +5499,7 @@ Since these are *child* routes, they will NOT load in the main `app.component.ht
     <router-outlet></router-outlet>
   </div>
 </div>
+
 
 ```
 
@@ -5041,6 +5513,7 @@ Since these are *child* routes, they will NOT load in the main `app.component.ht
 
 **Code:**
 
+
 ```typescript
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -5053,13 +5526,16 @@ const routes: Routes = [
   { path: '**', redirectTo: '/not-found' } 
 ];
 
+
 ```
 
 ### 10. Path Matching Strategies (full vs prefix)
 
 * **Scenario:** You have a redirect for the empty path `''`.
+
 ```typescript
 { path: '', redirectTo: '/home' } // ERROR (Infinite Loop potential)
+
 
 ```
 
@@ -5069,8 +5545,10 @@ const routes: Routes = [
 
 **Code:**
 
+
 ```typescript
 { path: '', redirectTo: '/home', pathMatch: 'full' }
+
 
 ```
 
@@ -5086,6 +5564,7 @@ const routes: Routes = [
 
 **Code (TypeScript):**
 
+
 ```typescript
 constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -5098,9 +5577,11 @@ onEdit() {
   });
 }
 
+
 ```
 
 **Code (HTML):**
+
 
 ```html
 <a 
@@ -5108,6 +5589,7 @@ onEdit() {
   queryParamsHandling="preserve">
   Edit
 </a>
+
 
 ```
 
@@ -5119,6 +5601,7 @@ onEdit() {
 * **Modern Approach (Functional Guards):** Angular 15+ uses simple functions instead of classes.
 
 **Step 1: Define the Guard Function (`auth.guard.ts`)**
+
 
 ```typescript
 import { inject } from '@angular/core';
@@ -5137,9 +5620,11 @@ export const authGuard: CanActivateFn = (route, state) => {
   }
 };
 
+
 ```
 
 **Step 2: Apply to Routes (`app.routes.ts`)**
+
 
 ```typescript
 { 
@@ -5147,6 +5632,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   component: ServersComponent,
   canActivate: [authGuard] // Attach the guard here
 }
+
 
 ```
 
@@ -5158,6 +5644,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
 **Code (`app.routes.ts`):**
 
+
 ```typescript
 { 
   path: 'servers', 
@@ -5166,6 +5653,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   canActivateChild: [authGuard], 
   children: [ ... ]
 }
+
 
 ```
 
@@ -5177,6 +5665,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
 **Step 1: Define Interface (`can-deactivate.guard.ts`)**
 
+
 ```typescript
 import { Observable } from 'rxjs';
 
@@ -5184,9 +5673,11 @@ export interface CanComponentDeactivate {
   canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
 }
 
+
 ```
 
 **Step 2: Create the Guard**
+
 
 ```typescript
 import { CanDeactivateFn } from '@angular/router';
@@ -5197,9 +5688,11 @@ export const canDeactivateGuard: CanDeactivateFn<CanComponentDeactivate> =
     return component.canDeactivate();
   };
 
+
 ```
 
 **Step 3: Implement in Component**
+
 
 ```typescript
 export class EditServerComponent implements CanComponentDeactivate {
@@ -5213,9 +5706,11 @@ export class EditServerComponent implements CanComponentDeactivate {
   }
 }
 
+
 ```
 
 **Step 4: Register in Routes**
+
 
 ```typescript
 { 
@@ -5223,6 +5718,7 @@ export class EditServerComponent implements CanComponentDeactivate {
   component: EditServerComponent, 
   canDeactivate: [canDeactivateGuard] 
 }
+
 
 ```
 
@@ -5237,13 +5733,16 @@ export class EditServerComponent implements CanComponentDeactivate {
 
 **Config:**
 
+
 ```typescript
 { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
 { path: 'server-error', component: ErrorPageComponent, data: {message: 'Server is down!'} }
 
+
 ```
 
 **Component Access:**
+
 
 ```typescript
 ngOnInit() {
@@ -5255,6 +5754,7 @@ ngOnInit() {
   });
 }
 
+
 ```
 
 ### 16. Resolving Dynamic Data (Resolvers)
@@ -5263,6 +5763,7 @@ ngOnInit() {
 * **Solution:** Use a **Resolver**. It fetches the data *before* the route is activated. The component only loads once the data is ready.
 
 **Step 1: Create Resolver Function (`server-resolver.ts`)**
+
 
 ```typescript
 import { ResolveFn } from '@angular/router';
@@ -5278,9 +5779,11 @@ export const serverResolver: ResolveFn<Server> = (route, state) => {
   return serversService.getServer(+route.params['id']);
 };
 
+
 ```
 
 **Step 2: Register in Route**
+
 
 ```typescript
 { 
@@ -5290,11 +5793,13 @@ export const serverResolver: ResolveFn<Server> = (route, state) => {
   resolve: { server: serverResolver } 
 }
 
+
 ```
 
 **Step 3: Access in Component**
 
 * **Note:** The component no longer needs to fetch the data itself. It just reads it from the route.
+
 
 ```typescript
 ngOnInit() {
@@ -5304,6 +5809,7 @@ ngOnInit() {
   });
 }
 
+
 ```
 
 ### 17. Hash Location Strategy (Optional)
@@ -5312,12 +5818,14 @@ ngOnInit() {
 * **Issue:** In older server configurations (like plain Apache/IIS), reloading `/users` might return a 404 error because the server looks for a real file named "users".
 * **Fix:** Use Hash Location (`localhost:4200/#/users`). The part after the `#` is ignored by the server and handled only by Angular.
 * **Code (`app.config.ts`):**
+
 ```typescript
 import { provideRouter, withHashLocation } from '@angular/router';
 
 providers: [
   provideRouter(routes, withHashLocation())
 ]
+
 
 ```
 
@@ -5352,6 +5860,7 @@ You have now mastered the Angular Router.
 
 **Code (`app.routes.ts`):**
 
+
 ```typescript
 import { Routes } from '@angular/router';
 // Note: We do NOT import UsersComponent here at the top!
@@ -5368,6 +5877,7 @@ export const routes: Routes = [
     loadComponent: () => import('./users/users.component').then(m => m.UsersComponent)
   }
 ];
+
 
 ```
 
@@ -5386,10 +5896,12 @@ export const routes: Routes = [
 
 **Code:**
 
+
 ```html
 @defer {
   <app-heavy-chart></app-heavy-chart>
 }
+
 
 ```
 
@@ -5402,12 +5914,14 @@ export const routes: Routes = [
 
 **Code:**
 
+
 ```html
 <button type="button" #loadBtn>Load Chart</button>
 
 @defer (on interaction(loadBtn)) {
   <app-heavy-chart></app-heavy-chart>
 }
+
 
 ```
 
@@ -5418,6 +5932,7 @@ export const routes: Routes = [
 
 **Code:**
 
+
 ```html
 <div style="height: 2000px">Long content...</div>
 
@@ -5426,6 +5941,7 @@ export const routes: Routes = [
 } @placeholder {
   <p>Scroll down to see the map...</p>
 }
+
 
 ```
 
@@ -5451,6 +5967,7 @@ Since the content is loaded asynchronously, you need to handle the different sta
 
 **Full Code Example:**
 
+
 ```html
 @defer (on interaction) {
   <app-heavy-chart></app-heavy-chart>
@@ -5464,6 +5981,7 @@ Since the content is loaded asynchronously, you need to handle the different sta
 @error {
   <p>Failed to load the chart. Check internet connection.</p>
 }
+
 
 ```
 
@@ -5504,6 +6022,7 @@ You now have the tools to make your app highly performant.
 
 **Code (auth.component.html):**
 
+
 ```html
 <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
   <div>
@@ -5526,9 +6045,11 @@ You now have the tools to make your app highly performant.
   </div>
 </form>
 
+
 ```
 
 **Code (auth.component.ts):**
+
 
 ```typescript
 import { Component } from '@angular/core';
@@ -5562,6 +6083,7 @@ export class AuthComponent {
   }
 }
 
+
 ```
 
 ### 3. Creating the AuthService
@@ -5571,6 +6093,7 @@ export class AuthComponent {
 * **Response Interface:** We define an interface for what Firebase returns (mainly `idToken`, `email`, `expiresIn`).
 
 **Code (auth.service.ts):**
+
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -5616,6 +6139,7 @@ export class AuthService {
   }
 }
 
+
 ```
 
 ### 4. Handling Loading States & Errors
@@ -5629,6 +6153,7 @@ export class AuthService {
 
 
 **Code (Handling Error in Component):**
+
 
 ```typescript
 onSubmit(form: NgForm) {
@@ -5656,6 +6181,7 @@ onSubmit(form: NgForm) {
   });
 }
 
+
 ```
 
 
@@ -5664,6 +6190,7 @@ onSubmit(form: NgForm) {
 * **Goal:** Create a robust class to hold user data. It shouldn't just be a plain object; it should have logic to check if the token is still valid.
 * **Token Logic:** We store the token expiration *date*. If the current date is *after* the expiration date, the token is invalid (null).
 * **Code (`user.model.ts`):**
+
 ```typescript
 export class User {
   constructor(
@@ -5683,6 +6210,7 @@ export class User {
   }
 }
 
+
 ```
 
 
@@ -5692,6 +6220,7 @@ export class User {
 * **Goal:** The `HeaderComponent` (showing "Logout" button) needs to know if we are logged in. The `AuthGuard` needs to know too.
 * **Tool:** `BehaviorSubject` (from RxJS). Unlike a regular Subject, it holds the *current value*. When a new component subscribes, it gets the latest user data immediately.
 * **Code (`auth.service.ts`):**
+
 ```typescript
 import { BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
@@ -5703,6 +6232,7 @@ export class AuthService {
   // ...rest of code
 }
 
+
 ```
 
 
@@ -5712,6 +6242,7 @@ export class AuthService {
 * **Action:** When the `signup` or `login` request returns successfully, we must create a `User` object and push it to the `BehaviorSubject`.
 * **Private Method:** It's good practice to create a private helper method inside `AuthService` to handle this.
 * **Code (`auth.service.ts`):**
+
 ```typescript
 import { tap } from 'rxjs/operators';
 
@@ -5740,6 +6271,7 @@ private handleAuthentication(email: string, userId: string, token: string, expir
   this.user.next(user);
 }
 
+
 ```
 
 
@@ -5750,14 +6282,17 @@ private handleAuthentication(email: string, userId: string, token: string, expir
 * **Solution:** Store the user data in the browser's `localStorage` (which survives refreshes).
 * **Step A: Saving (`auth.service.ts`):**
 Inside `handleAuthentication`, add:
+
 ```typescript
 localStorage.setItem('userData', JSON.stringify(user));
+
 
 ```
 
 
 * **Step B: Restoring (`autoLogin` method):**
 Create a method to check storage when the app launches.
+
 ```typescript
 autoLogin() {
   const userData: {
@@ -5789,6 +6324,7 @@ autoLogin() {
   }
 }
 
+
 ```
 
 
@@ -5804,6 +6340,7 @@ autoLogin() {
 
 
 * **Code:**
+
 ```typescript
 logout() {
   this.user.next(null);
@@ -5816,6 +6353,7 @@ logout() {
   this.tokenExpirationTimer = null;
 }
 
+
 ```
 
 
@@ -5825,6 +6363,7 @@ logout() {
 * **Goal:** Automatically log the user out when the token expires (e.g., after 1 hour) for security.
 * **Implementation:** Use `setTimeout`.
 * **Code:**
+
 ```typescript
 private tokenExpirationTimer: any;
 
@@ -5833,6 +6372,7 @@ autoLogout(expirationDuration: number) {
     this.logout();
   }, expirationDuration);
 }
+
 
 ```
 
@@ -5850,6 +6390,7 @@ autoLogout(expirationDuration: number) {
 * **RxJS Magic:** We use `take(1)` (get one value and unsubscribe) and `exhaustMap` (wait for the user, then switch to the HTTP request).
 
 **Code (`auth-interceptor.service.ts`):**
+
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -5880,6 +6421,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   }
 }
 
+
 ```
 
 ### 12. Protecting Routes (AuthGuard)
@@ -5889,6 +6431,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 * **RxJS Map:** We transform the `User` object into a `boolean` (true/false) using `map`.
 
 **Code (`auth.guard.ts`):**
+
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -5916,9 +6459,11 @@ export class AuthGuard implements CanActivate {
   }
 }
 
+
 ```
 
 **Usage (`app-routing.module.ts`):**
+
 
 ```typescript
 { 
@@ -5926,6 +6471,7 @@ export class AuthGuard implements CanActivate {
   component: RecipesComponent, 
   canActivate: [AuthGuard] // Attach guard here
 }
+
 
 ```
 
@@ -5935,6 +6481,7 @@ export class AuthGuard implements CanActivate {
 * **Implementation:** Subscribe to the `user` Subject in the Header component.
 
 **Code (`header.component.ts`):**
+
 
 ```typescript
 isAuthenticated = false;
@@ -5957,9 +6504,11 @@ ngOnDestroy() {
   this.userSub.unsubscribe();
 }
 
+
 ```
 
 **Template (`header.component.html`):**
+
 
 ```html
 <ul class="nav navbar-nav navbar-right">
@@ -5971,6 +6520,7 @@ ngOnDestroy() {
     <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
   </li>
 </ul>
+
 
 ```
 
