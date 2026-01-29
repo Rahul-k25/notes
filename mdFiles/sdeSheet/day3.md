@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/styles.css">
 
 ### Striver's SDE Sheet Notes (Day 3: Arrays & Strings)
 
@@ -227,5 +227,5 @@ private void merge(int[] nums, int left, int mid, int right) {
 
 
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/styles.css">
 
 ## Kafka
 
@@ -317,5 +317,5 @@ Would you like to integrate Kafka Streams, Grafana, or ElasticSearch for advance
 
 
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>

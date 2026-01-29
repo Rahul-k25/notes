@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
 <script src="/assets/js/accordion.js"></script>
 
 # Backend Notes
@@ -11,5 +11,5 @@
 - [Kafka scenario example](backend/kafka.md)
 - [GraphQL](backend/graphql.md)
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../assets/js/accordion.js"></script>
+<script src="../assets/js/theme.js"></script>

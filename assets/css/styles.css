@@ -53,9 +53,8 @@ h1, h2, h3, h4, h5, h6 {
 
 #header_wrap .inner,
 #footer_wrap .inner,
-#main_content .inner {
-    position: initial;
-    max-width: 900px;
+#main_content {
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }

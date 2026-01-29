@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/styles.css">
 
 ### Striver's SDE Sheet Notes (Day 4: Arrays & Hashing)
 
@@ -226,5 +226,5 @@ public int lengthOfLongestSubstring(String s) {
 
 
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>

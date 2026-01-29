@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
 
 # **1. Seven Design Patterns from the Video**
 
@@ -595,5 +595,5 @@ We covered:
 - **Additional Essential Patterns**
 - **Real-World Examples for Each**
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../assets/js/accordion.js"></script>
+<script src="../assets/js/theme.js"></script>

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/styles.css">
 
 # Topics (Inprogress)
 
@@ -416,5 +416,5 @@ Here is a comprehensive list of **Java topics** that will be covered in the note
 
 
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>

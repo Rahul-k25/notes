@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
 
 # Angular Notes
 
@@ -6536,5 +6536,5 @@ You have built a complete Authentication system.
 ---
 
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../assets/js/accordion.js"></script>
+<script src="../assets/js/theme.js"></script>

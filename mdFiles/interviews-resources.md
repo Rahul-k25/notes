@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
 
 # Interview Resources
 
@@ -6,5 +6,5 @@
 - [Data structure and Algorithms (github repo for codes in java)](https://github.com/williamfiset/algorithms)
 - [Coding Interview university (jwasham)](https://github.com/jwasham/coding-interview-university)
 
-<script src="assets/js/accordion.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="../assets/js/accordion.js"></script>
+<script src="../assets/js/theme.js"></script>
