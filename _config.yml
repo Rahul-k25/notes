@@ -4,3 +4,4 @@ description: A collection of my notes.
 assets:
   - /assets/css/styles.css
   - /assets/js/accordion.js
+  - /assets/js/theme.js
