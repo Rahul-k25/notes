@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 # Topics (Inprogress)
 
 Here is a comprehensive list of **Java topics** that will be covered in the notes, categorized by difficulty level and subject area. The goal is to include every relevant topic with detailed explanations, examples, and best practices.
@@ -412,3 +414,7 @@ Here is a comprehensive list of **Java topics** that will be covered in the note
   }
   ```
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

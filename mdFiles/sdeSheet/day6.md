@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 6: LinkedList part-II)
 
 ---
@@ -226,3 +228,6 @@
 - **Similar Problems:** Merge Two Sorted Lists, Linked List Flattening.
 
 ---
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

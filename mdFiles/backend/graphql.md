@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 # **Complete Guide to GraphQL with Java (Spring Boot) – From Zero to Hero 🚀**  
 
 GraphQL is a powerful alternative to REST APIs, providing **flexible, efficient data fetching**. In this guide, I will explain **why each concept exists** and **how it works**, assuming you know nothing about GraphQL.  
@@ -330,3 +332,6 @@ Here are some valuable resources to help you deepen your understanding of GraphQ
 
 10. **Auth0's Guide on Building a GraphQL API with Spring Boot**: A step-by-step guide demonstrating how to build a secured GraphQL API with Spring Boot.
     - [How to Build a GraphQL API with Spring Boot](https://auth0.com/blog/how-to-build-a-graphql-api-with-spring-boot/) 
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 9: Recursion)
 
 ---
@@ -232,3 +234,7 @@
 - **Similar Problems:** Permutation Sequence, Next Permutation.
 
 ---
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

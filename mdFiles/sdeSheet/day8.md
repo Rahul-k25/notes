@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 8: Greedy Algorithm)
 
 
@@ -205,3 +207,7 @@
 - **Similar Problems:** Assign Tasks to Servers, Distribute Candies.
 
 ---
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

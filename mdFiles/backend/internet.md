@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ## **1. How does the Internet work?**
 The internet is a global network of interconnected computers and devices that communicate using standardized protocols. It enables data transfer, communication, and services like websites, emails, and streaming.
 
@@ -128,3 +130,7 @@ Web browsers are software applications that retrieve, interpret, and display web
 **📖 Related Resources:**
 - [Inside a Modern Browser – Google Developers](https://developer.chrome.com/docs/web-platform/how-browsers-work/)
 - [MDN Guide on Browsers](https://developer.mozilla.org/en-US/docs/Web/Performance)
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

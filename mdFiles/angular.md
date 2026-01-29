@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="/assets/css/styles.css">
-<script src="/assets/js/accordion.js"></script>
+<link rel="stylesheet" href="assets/css/styles.css">
 
 # Angular Notes
 
@@ -6535,3 +6534,7 @@ You have built a complete Authentication system.
 * **Guards:** `CanActivate` protects sensitive routes.
 
 ---
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Days 1-9)
 
   ---
@@ -214,3 +216,6 @@
   - **Similar Problems:** Maximum Subarray Sum, Buy and Sell Stock with Cooldown, Buy and Sell Stock K Times.
 
   ---
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

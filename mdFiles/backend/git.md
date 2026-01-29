@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ## **Git - Version Control System**
 
 Git is a distributed version control system (VCS) that tracks changes in source code during software development. It allows multiple developers to collaborate efficiently, manage code versions, and revert changes when necessary.
@@ -204,3 +206,7 @@ Merge conflicts occur when changes from different branches affect the same lines
 
 
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

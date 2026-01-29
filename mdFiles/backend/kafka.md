@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ## Kafka
 
 Since using Spring Boot, Here is a full end-to-end Kafka project using Spring Boot, covering:
@@ -313,3 +315,7 @@ curl -X POST "http://localhost:8080/logs/send?level=INFO&message=Service%20Start
 
 Would you like to integrate Kafka Streams, Grafana, or ElasticSearch for advanced processing?
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

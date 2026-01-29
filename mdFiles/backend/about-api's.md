@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ## **Learn about APIs**
 APIs (Application Programming Interfaces) enable communication between different software applications. They define rules and protocols for accessing web services, databases, and other external systems.
 
@@ -276,3 +278,7 @@ SAML is an XML-based authentication framework for SSO.
 
 ---
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

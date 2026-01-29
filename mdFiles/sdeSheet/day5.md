@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 5: LinkedList)
 
 **1. Reverse Linked List**
@@ -171,3 +173,6 @@
 
 
  
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

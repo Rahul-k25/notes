@@ -36,6 +36,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
+    color: var(--text-color) !important;
+}
+
 #header_wrap,
 #footer_wrap,
 #main_content_wrap {

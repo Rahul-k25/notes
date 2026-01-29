@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 11: Binary Search)
 
 ---
@@ -382,3 +384,7 @@
 - **Similar Problems:** Minimum Distance Between Two Elements, Aggressive Cows.
 
 ---
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

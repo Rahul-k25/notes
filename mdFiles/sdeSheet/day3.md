@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 3: Arrays & Strings)
 
 ---
@@ -223,3 +225,7 @@ private void merge(int[] nums, int left, int mid, int right) {
   - Output: `2` (Reverse Pairs: (3, 1), (3, 1))
 - **Similar Problems:** Count Inversions, Count Significant Inversions.
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

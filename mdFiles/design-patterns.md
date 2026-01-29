@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 # **1. Seven Design Patterns from the Video**
 
 ### **1.1 Singleton Pattern**
@@ -592,3 +594,6 @@ We covered:
 - **The 7 Patterns from the Video**
 - **Additional Essential Patterns**
 - **Real-World Examples for Each**
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

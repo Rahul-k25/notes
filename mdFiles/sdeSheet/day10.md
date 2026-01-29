@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 10: Recursion and Backtracking)
 
 ---
@@ -292,3 +294,7 @@
 - **Similar Problems:** String Segmentation, Palindrome Partitioning.
 
 --- 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

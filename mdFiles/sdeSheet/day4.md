@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 4: Arrays & Hashing)
 
 ---
@@ -222,3 +224,7 @@ public int lengthOfLongestSubstring(String s) {
 
 - **Similar Problems:** Longest Subarray with At Most K Distinct Elements, Find Anagrams in a String.
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

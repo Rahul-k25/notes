@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 7: LinkedList and Arrays)
 
 
@@ -216,3 +218,6 @@
 - **Similar Problems:** Longest Substring with At Most K Distinct Characters, Longest Consecutive Sequence.
 
 ---
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

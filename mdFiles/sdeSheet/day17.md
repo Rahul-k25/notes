@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ### Striver's SDE Sheet Notes (Day 17: Binary Tree)
 
 ---
@@ -449,4 +451,6 @@ Approach:**
 
 ---
 
-These problems will help you strengthen your tree traversal skills and deepen your understanding of BFS, DFS, and binary tree manipulations.
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>

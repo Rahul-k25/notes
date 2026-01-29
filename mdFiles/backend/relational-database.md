@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/styles.css">
+
 ## **Relational Database (MySQL) - Complete Guide**
 
 ### **1. Introduction to Relational Databases**
@@ -841,3 +843,7 @@ Session.query(User).all()
 - Using Connection Pooling
 - Handling Large Datasets Efficiently
 
+
+
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>
