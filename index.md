@@ -7,7 +7,7 @@ Here are the topics I've covered:
 
 - [Interviews resources](mdFiles/interviews-resources.md)
 - [Backend](mdFiles/backend.md)
-- [Frontend](mdFiles/frontend.md)
+- [Angular](mdFiles/angular.md)
 - [Design Patterns](mdFiles/design-patterns.md)
 
 #### Important links
