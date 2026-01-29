@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script src="/assets/js/accordion.js"></script>
+<script src="/assets/js/theme.js"></script>
 
 <button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
 
@@ -28,6 +29,3 @@ Here are the topics I've covered:
 - [Note 10](mdFiles/sdeSheet/day10.md)
 - [Note 11](mdFiles/sdeSheet/day11.md)
 - [Note 17](mdFiles/sdeSheet/day17.md)
-
-
-<script src="/assets/js/theme.js"></script>
