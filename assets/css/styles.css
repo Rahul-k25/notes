@@ -1,20 +1,4 @@
 :root {
-    --bg-color: #ffffff;
-    --text-color: #24292e;
-    --link-color: #0366d6;
-    --border-color: #e1e4e8;
-    
-    /* Accordion colors */
-    --acc-bg: #f1f1f1;
-    --acc-color: #444;
-    --acc-hover: #ccc;
-    --panel-bg: #f9f9f9;
-    
-    /* Code block colors */
-    --code-bg: #f6f8fa;
-}
-
-[data-theme="dark"] {
     --bg-color: #0d1117;
     --text-color: #c9d1d9;
     --link-color: #58a6ff;
@@ -28,6 +12,22 @@
     
     /* Code block colors */
     --code-bg: #161b22;
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #24292e;
+    --link-color: #0366d6;
+    --border-color: #e1e4e8;
+    
+    /* Accordion colors */
+    --acc-bg: #f1f1f1;
+    --acc-color: #444;
+    --acc-hover: #ccc;
+    --panel-bg: #f9f9f9;
+    
+    /* Code block colors */
+    --code-bg: #f6f8fa;
 }
 
 body {
