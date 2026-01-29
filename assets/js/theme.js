@@ -4,7 +4,7 @@ function applyTheme(theme) {
     
     const btn = document.getElementById('theme-toggle');
     if (btn) {
-        btn.innerText = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+        btn.innerText = theme === 'light' ? '🌙' : '☀️';
     }
 }
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const btn = document.createElement("button");
         btn.id = "theme-toggle";
         btn.className = "theme-toggle-btn";
-        btn.innerText = savedTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+        btn.innerText = savedTheme === 'light' ? '🌙' : '☀️';
         
         const headerInner = document.querySelector("#header_wrap .inner");
         

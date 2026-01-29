@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 
 
-# Welcome to My Notes
-Here are the topics I've covered:
+# Welcome to Scratchpad
+Covered topics:
 
 - [Interviews resources](mdFiles/interviews-resources.md)
 - [Backend](mdFiles/backend.md)
