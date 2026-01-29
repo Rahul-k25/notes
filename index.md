@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 
-<button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
 
 # Welcome to My Notes
 Here are the topics I've covered:

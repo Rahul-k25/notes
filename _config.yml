@@ -2,6 +2,6 @@ theme: jekyll-theme-slate
 title: My Notes
 description: A collection of my notes.
 assets:
-  - /assets/css/styles.css
-  - /assets/js/accordion.js
-  - /assets/js/theme.js
+  - /notes/assets/css/styles.css
+  - /notes/assets/js/accordion.js
+  - /notes/assets/js/theme.js
