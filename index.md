@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="/assets/css/styles.css">
-<script src="/assets/js/accordion.js"></script>
-<script src="/assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/accordion.js"></script>
+<script src="assets/js/theme.js"></script>
 
 <button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
 
