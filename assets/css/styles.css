@@ -93,6 +93,7 @@ code {
 [data-theme="dark"] .highlight .kn,
 [data-theme="dark"] .highlight .kp,
 [data-theme="dark"] .highlight .kr,
+[data-theme="dark"] .highlight .nt,
 [data-theme="dark"] .highlight .kt
 {
     color: #569cd6 !important;
