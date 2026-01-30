@@ -15,7 +15,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode rotateRight(ListNode head, int k) {
       if (head == null || head.next == null || k == 0) return head;
       ListNode temp = head;
@@ -33,7 +34,8 @@
       temp.next = null;  // Break the circle
       return head;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [1,2,3,4,5], k = 2`
@@ -52,7 +54,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public Node copyRandomList(Node head) {
       if (head == null) return null;
       Map<Node, Node> map = new HashMap<>();
@@ -69,7 +72,8 @@
       }
       return map.get(head);
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [1,2,3,4] with random pointers`
@@ -88,7 +92,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<List<Integer>> threeSum(int[] nums) {
       List<List<Integer>> result = new ArrayList<>();
       Arrays.sort(nums);
@@ -112,7 +117,8 @@
       }
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums = [-1,0,1,2,-1,-4]`
@@ -131,7 +137,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int trap(int[] height) {
       if (height == null || height.length == 0) return 0;
       int left = 0, right = height.length - 1, leftMax = 0, rightMax = 0, result = 0;
@@ -148,7 +155,8 @@
       }
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `height = [0,1,0,2,1,0,1,3,2,1,2,1]`
@@ -166,7 +174,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int removeDuplicates(int[] nums) {
       if (nums.length == 0) return 0;
       int index = 1;
@@ -178,7 +187,8 @@
       }
       return index;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums = [1,1,2]`
@@ -196,7 +206,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int findMaxConsecutiveOnes(int[] nums) {
       int maxCount = 0, currentCount = 0;
       for (int num : nums) {
@@ -209,7 +220,8 @@
       }
       return maxCount;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums = [1,1,0,1,1,1]`

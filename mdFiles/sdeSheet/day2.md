@@ -18,6 +18,7 @@
 
 - **Code (Optimized):**
 
+
 ```java
 public void rotate(int[][] matrix) {
     int n = matrix.length;
@@ -40,6 +41,7 @@ public void rotate(int[][] matrix) {
         }
     }
 }
+
 ```
 
 - **Example Input:**
@@ -59,6 +61,7 @@ public void rotate(int[][] matrix) {
 
 - **Code (Optimized):**
 
+
 ```java
 public int[][] merge(int[][] intervals) {
     Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
@@ -74,6 +77,7 @@ public int[][] merge(int[][] intervals) {
 
     return merged.toArray(new int[merged.size()][]);
 }
+
 ```
 
 - **Example Input:**
@@ -93,6 +97,7 @@ public int[][] merge(int[][] intervals) {
 
 - **Code (Optimized):**
 
+
 ```java
 public void merge(int[] nums1, int m, int[] nums2, int n) {
     int i = m - 1, j = n - 1, k = m + n - 1;
@@ -109,6 +114,7 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
         nums1[k--] = nums2[j--];
     }
 }
+
 ```
 
 - **Example Input:**
@@ -125,6 +131,7 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
   - **Optimized:** Use Floyd’s Tortoise and Hare algorithm to detect a cycle (similar to finding a cycle in a linked list).
 
 - **Code (Optimized):**
+
 
 ```java
 public int findDuplicate(int[] nums) {
@@ -146,6 +153,7 @@ public int findDuplicate(int[] nums) {
 
     return slow;
 }
+
 ```
 
 - **Example Input:**
@@ -162,6 +170,7 @@ public int findDuplicate(int[] nums) {
   - **Optimized:** Use mathematical equations based on sums and XOR properties.
 
 - **Code (Optimized):**
+
 
 ```java
 public int[] findErrorNums(int[] nums) {
@@ -188,6 +197,7 @@ public int[] findErrorNums(int[] nums) {
 
     return new int[] {xor1, xor0};
 }
+
 ```
 
 - **Example Input:**
@@ -204,6 +214,7 @@ public int[] findErrorNums(int[] nums) {
   - **Optimized:** Use merge sort and count inversions during the merge process.
 
 - **Code (Optimized):**
+
 
 ```java
 public int countInversions(int[] nums) {
@@ -248,6 +259,7 @@ private int merge(int[] nums, int left, int mid, int right) {
 
     return inversions;
 }
+
 ```
 
 - **Example Input:**
@@ -263,6 +275,7 @@ private int merge(int[] nums, int left, int mid, int right) {
   - **Optimized:** Utilize the merge sort technique and count the reverse pairs during the merge step.
 
 - **Code (Optimized):**
+
 
 ```java
 public int reversePairs(int[] nums) {
@@ -311,6 +324,7 @@ private int merge(int[] nums, int left, int mid, int right) {
 
     return count;
 }
+
 ```
 
 - **Example Input:**

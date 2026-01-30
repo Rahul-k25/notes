@@ -12,7 +12,8 @@
   
 - **Code (Recursive):**
 
-  ```java
+  
+```java
   public List<Integer> inorderTraversal(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       inorder(root, result);
@@ -25,7 +26,8 @@
       result.add(node.val);
       inorder(node.right, result);
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, null, 2, 3]`
@@ -41,7 +43,8 @@
   
 - **Code (Recursive):**
 
-  ```java
+  
+```java
   public List<Integer> preorderTraversal(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       preorder(root, result);
@@ -54,7 +57,8 @@
       preorder(node.left, result);
       preorder(node.right, result);
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, null, 2, 3]`
@@ -70,7 +74,8 @@
   
 - **Code (Recursive):**
 
-  ```java
+  
+```java
   public List<Integer> postorderTraversal(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       postorder(root, result);
@@ -83,7 +88,8 @@
       postorder(node.right, result);
       result.add(node.val);
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, null, 2, 3]`
@@ -99,7 +105,8 @@
   
 - **Code:**
 
-  ```java
+  
+```java
   public List<Integer> morrisInorderTraversal(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       TreeNode current = root;
@@ -126,7 +133,8 @@
       
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, null, 2, 3]`
@@ -142,7 +150,8 @@
   
 - **Code:**
 
-  ```java
+  
+```java
   public List<Integer> morrisPreorderTraversal(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       TreeNode current = root;
@@ -169,7 +178,8 @@
       
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, null, 2, 3]`
@@ -185,7 +195,8 @@
   
 - **Code (BFS):**
 
-  ```java
+  
+```java
   public List<Integer> leftView(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       if (root == null) return result;
@@ -205,7 +216,8 @@
       
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, 2, 3, 4, null, 5, 6]`
@@ -221,7 +233,8 @@
   
 - **Code (BFS):**
 
-  ```java
+  
+```java
   public List<Integer> bottomView(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       if (root == null) return result;
@@ -244,7 +257,8 @@
       result.addAll(map.values());
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, 2, 3, 4, null, 5, 6]`
@@ -260,7 +274,8 @@
   
 - **Code (BFS):**
 
-  ```java
+  
+```java
   public List<Integer> topView(TreeNode root) {
       List<Integer> result = new ArrayList<>();
       if (root == null) return result;
@@ -285,7 +300,8 @@
       result.addAll(map.values());
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, 2, 3, 4, null, 5, 6]`
@@ -303,7 +319,8 @@ Approach:**
   
 - **Code (Recursive):**
 
-  ```java
+  
+```java
   public List<List<Integer>> threeOrders(TreeNode root) {
       List<List<Integer>> result = new ArrayList<>();
       List<Integer> preorder = new ArrayList<>();
@@ -327,7 +344,8 @@ Approach:**
       traverse(node.right, preorder, inorder, postorder);
       postorder.add(node.val);
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, null, 2, 3]`
@@ -343,7 +361,8 @@ Approach:**
   
 - **Code (BFS):**
 
-  ```java
+  
+```java
   public List<List<Integer>> verticalOrder(TreeNode root) {
       List<List<Integer>> result = new ArrayList<>();
       if (root == null) return result;
@@ -367,7 +386,8 @@ Approach:**
       result.addAll(map.values());
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, 2, 3, 4, null, 5, 6]`
@@ -383,7 +403,8 @@ Approach:**
   
 - **Code (DFS):**
 
-  ```java
+  
+```java
   public List<Integer> rootToNodePath(TreeNode root, int target) {
       List<Integer> path = new ArrayList<>();
       if (findPath(root, target, path)) {
@@ -406,7 +427,8 @@ Approach:**
       path.remove(path.size() - 1);
       return false;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, 2, 3, 4, null, 5, 6]`, Target: `5`
@@ -422,7 +444,8 @@ Approach:**
   
 - **Code (BFS):**
 
-  ```java
+  
+```java
   public int maxWidth(TreeNode root) {
       if (root == null) return 0;
       
@@ -443,7 +466,8 @@ Approach:**
       
       return maxWidth;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: Binary Tree: `[1, 2, 3, 4, null, 5, 6]`

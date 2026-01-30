@@ -14,7 +14,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
       if (headA == null || headB == null) return null;
       ListNode pA = headA, pB = headB;
@@ -24,7 +25,8 @@
       }
       return pA;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `headA = [4,1,8,4,5], headB = [5,0,1,8,4,5]`
@@ -44,7 +46,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public boolean hasCycle(ListNode head) {
       ListNode slow = head, fast = head;
       while (fast != null && fast.next != null) {
@@ -54,7 +57,8 @@
       }
       return false;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [3,2,0,-4]` (Cycle at node 2)
@@ -73,7 +77,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode reverseKGroup(ListNode head, int k) {
       if (head == null || k == 1) return head;
       ListNode dummy = new ListNode(0);
@@ -98,7 +103,8 @@
       }
       return dummy.next;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [1,2,3,4,5], k = 3`
@@ -117,7 +123,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public boolean isPalindrome(ListNode head) {
       if (head == null || head.next == null) return true;
       ListNode slow = head, fast = head;
@@ -145,7 +152,8 @@
       }
       return prev;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [1,2,2,1]`
@@ -164,7 +172,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode detectCycle(ListNode head) {
       ListNode slow = head, fast = head;
       while (fast != null && fast.next != null) {
@@ -181,7 +190,8 @@
       }
       return null;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [3,2,0,-4], cycleStart = 2`
@@ -199,7 +209,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public Node flatten(Node head) {
       if (head == null) return null;
       Node current = head;
@@ -219,7 +230,8 @@
       }
       return head;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = [1,2,3,4,5,6] with child nodes`

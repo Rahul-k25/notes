@@ -13,7 +13,8 @@
   - Iterate through the matrix to identify zero locations and mark the corresponding first row/column elements.
   - Update the matrix in a second pass.
   - **Code (Optimized):**
-  ```java
+  
+```java
   public void setZeroes(int[][] matrix) {
       int rows = matrix.length, cols = matrix[0].length;
       boolean firstRowZero = false, firstColZero = false;
@@ -39,7 +40,8 @@
       if (firstRowZero) for (int j = 0; j < cols; j++) matrix[0][j] = 0;
       if (firstColZero) for (int i = 0; i < rows; i++) matrix[i][0] = 0;
   }
-  ```
+  
+```
   - **Example Input:**
   - Input: `[[1, 1, 1], [1, 0, 1], [1, 1, 1]]`
   - Output: `[[1, 0, 1], [0, 0, 0], [1, 0, 1]]`
@@ -53,7 +55,8 @@
   - Use the property: `res[i][j] = res[i-1][j-1] + res[i-1][j]`.
   - Utilize lists to dynamically construct rows.
   - **Code:**
-  ```java
+  
+```java
   public List<List<Integer>> generate(int numRows) {
       List<List<Integer>> triangle = new ArrayList<>();
 
@@ -69,7 +72,8 @@
 
       return triangle;
   }
-  ```
+  
+```
   - **Example Input:**
   - Input: `5`
   - Output: `[[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]`
@@ -85,7 +89,8 @@
       2. Swap it with the next larger element.
       3. Reverse the subarray to the right of the swapped element.
   - **Code (Optimized):**
-  ```java
+  
+```java
   public void nextPermutation(int[] nums) {
       int n = nums.length, i = n - 2;
 
@@ -114,7 +119,8 @@
           end--;
       }
   }
-  ```
+  
+```
   - **Example Input:**
   - Input: `[1, 2, 3]`
   - Output: `[1, 3, 2]`
@@ -129,7 +135,8 @@
   - Reset `currentSum` to 0 if it goes negative.
   - Return `maxSum`.
   - **Code (Optimized):**
-  ```java
+  
+```java
   public int maxSubArray(int[] nums) {
       int currentSum = 0, maxSum = nums[0];
 
@@ -140,7 +147,8 @@
 
       return maxSum;
   }
-  ```
+  
+```
   - **Example Input:**
   - Input: `[-2, 1, -3, 4, -1, 2, 1, -5, 4]`
   - Output: `6` (Subarray: `[4, -1, 2, 1]`)
@@ -154,7 +162,8 @@
   - Use three pointers: `low`, `mid`, and `high`.
   - Swap elements to partition the array into three sections (0s, 1s, and 2s).
   - **Code (Optimized):**
-  ```java
+  
+```java
   public void sortColors(int[] nums) {
       int low = 0, mid = 0, high = nums.length - 1;
 
@@ -174,7 +183,8 @@
           }
       }
   }
-  ```
+  
+```
   - **Example Input:**
   - Input: `[2, 0, 2, 1, 1, 0]`
   - Output: `[0, 0, 1, 1, 2, 2]`
@@ -193,7 +203,8 @@
   - Update the maximum profit if the calculated profit is greater.
   - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int maxProfit(int[] prices) {
       int minPrice = Integer.MAX_VALUE;
       int maxProfit = 0;
@@ -208,7 +219,8 @@
 
       return maxProfit;
   }
-  ```
+  
+```
 
   - **Example Input:**
   - Input: `[7, 1, 5, 3, 6, 4]`

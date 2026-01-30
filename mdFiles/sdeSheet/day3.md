@@ -12,6 +12,7 @@
 
 - **Code (Optimized):**
 
+
 ```java
 public boolean searchMatrix(int[][] matrix, int target) {
     if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;
@@ -29,6 +30,7 @@ public boolean searchMatrix(int[][] matrix, int target) {
 
     return false;
 }
+
 ```
 
 - **Example Input:**
@@ -46,6 +48,7 @@ public boolean searchMatrix(int[][] matrix, int target) {
 
 - **Code (Optimized):**
 
+
 ```java
 public double myPow(double x, int n) {
     if (n == 0) return 1;
@@ -57,6 +60,7 @@ public double myPow(double x, int n) {
     double half = myPow(x, n / 2);
     return (n % 2 == 0) ? half * half : half * half * x;
 }
+
 ```
 
 - **Example Input:**
@@ -74,6 +78,7 @@ public double myPow(double x, int n) {
 
 - **Code (Optimized):**
 
+
 ```java
 public int majorityElement(int[] nums) {
     int count = 0, candidate = 0;
@@ -85,6 +90,7 @@ public int majorityElement(int[] nums) {
     }
     return candidate;
 }
+
 ```
 
 - **Example Input:**
@@ -101,6 +107,7 @@ public int majorityElement(int[] nums) {
   - Extend Moore's Voting Algorithm to allow for two potential candidates.
 
 - **Code (Optimized):**
+
 
 ```java
 public List<Integer> majorityElement(int[] nums) {
@@ -134,6 +141,7 @@ public List<Integer> majorityElement(int[] nums) {
 
     return result;
 }
+
 ```
 
 - **Example Input:**
@@ -151,6 +159,7 @@ public List<Integer> majorityElement(int[] nums) {
 
 - **Code (Optimized):**
 
+
 ```java
 public int uniquePaths(int m, int n) {
     int N = m + n - 2;
@@ -163,6 +172,7 @@ public int uniquePaths(int m, int n) {
 
     return (int) res;
 }
+
 ```
 
 - **Example Input:**
@@ -179,6 +189,7 @@ public int uniquePaths(int m, int n) {
   - Use a modified merge sort to count pairs efficiently.
 
 - **Code (Optimized):**
+
 
 ```java
 public int reversePairs(int[] nums) {
@@ -218,6 +229,7 @@ private void merge(int[] nums, int left, int mid, int right) {
 
     System.arraycopy(temp, 0, nums, left, temp.length);
 }
+
 ```
 
 - **Example Input:**

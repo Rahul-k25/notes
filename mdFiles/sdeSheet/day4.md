@@ -13,6 +13,7 @@
 
 - **Code (Optimized):**
 
+
 ```java
 public int[] twoSum(int[] nums, int target) {
     Map<Integer, Integer> numMap = new HashMap<>();
@@ -25,6 +26,7 @@ public int[] twoSum(int[] nums, int target) {
     }
     return new int[0];
 }
+
 ```
 
 - **Example Input:**
@@ -42,6 +44,7 @@ public int[] twoSum(int[] nums, int target) {
   - Avoid duplicates using conditions during traversal.
 
 - **Code (Optimized):**
+
 
 ```java
 public List<List<Integer>> fourSum(int[] nums, int target) {
@@ -70,6 +73,7 @@ public List<List<Integer>> fourSum(int[] nums, int target) {
     }
     return result;
 }
+
 ```
 
 - **Example Input:**
@@ -87,6 +91,7 @@ public List<List<Integer>> fourSum(int[] nums, int target) {
   - For each element, check if it's the start of a sequence, and count the sequence length.
 
 - **Code (Optimized):**
+
 
 ```java
 public int longestConsecutive(int[] nums) {
@@ -111,6 +116,7 @@ public int longestConsecutive(int[] nums) {
 
     return maxLength;
 }
+
 ```
 
 - **Example Input:**
@@ -128,6 +134,7 @@ public int longestConsecutive(int[] nums) {
   - If `(prefix sum - K)` exists, update the maximum length.
 
 - **Code (Optimized):**
+
 
 ```java
 public int maxSubArrayLen(int[] nums, int k) {
@@ -148,6 +155,7 @@ public int maxSubArrayLen(int[] nums, int k) {
 
     return maxLength;
 }
+
 ```
 
 - **Example Input:**
@@ -166,6 +174,7 @@ public int maxSubArrayLen(int[] nums, int k) {
 
 - **Code (Optimized):**
 
+
 ```java
 public int subarraysWithXor(int[] nums, int target) {
     Map<Integer, Integer> prefixXorMap = new HashMap<>();
@@ -182,6 +191,7 @@ public int subarraysWithXor(int[] nums, int target) {
 
     return count;
 }
+
 ```
 
 - **Example Input:**
@@ -200,6 +210,7 @@ public int subarraysWithXor(int[] nums, int target) {
 
 - **Code (Optimized):**
 
+
 ```java
 public int lengthOfLongestSubstring(String s) {
     int n = s.length(), maxLength = 0;
@@ -216,6 +227,7 @@ public int lengthOfLongestSubstring(String s) {
 
     return maxLength;
 }
+
 ```
 
 - **Example Input:**

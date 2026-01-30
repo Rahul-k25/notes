@@ -14,7 +14,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int maxMeetings(int start[], int end[], int n) {
       int count = 1;
       int lastEnd = end[0];
@@ -26,7 +27,8 @@
       }
       return count;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `start = [1, 3, 0, 5, 8, 5], end = [2, 4, 6, 7, 9, 9]`
@@ -45,7 +47,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int findPlatform(int[] arr, int[] dep, int n) {
       Arrays.sort(arr);
       Arrays.sort(dep);
@@ -63,7 +66,8 @@
       }
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `arr = [10, 15, 25, 30], dep = [20, 25, 30, 35]`
@@ -82,7 +86,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int jobScheduling(Job[] jobs, int n) {
       Arrays.sort(jobs, (a, b) -> b.profit - a.profit);
       int[] result = new int[n];
@@ -99,7 +104,8 @@
       }
       return maxProfit;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `jobs = [{1, 50}, {2, 20}, {3, 100}, {2, 70}]`
@@ -119,7 +125,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public double fractionalKnapsack(int W, Item arr[], int n) {
       Arrays.sort(arr, (a, b) -> Double.compare(b.value / (double) b.weight, a.value / (double) a.weight));
       double maxValue = 0.0;
@@ -134,7 +141,8 @@
       }
       return maxValue;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `W = 50, arr = [{60, 10}, {100, 20}, {120, 30}]`
@@ -153,7 +161,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int minCoins(int[] coins, int V) {
       Arrays.sort(coins);
       int count = 0;
@@ -165,7 +174,8 @@
       }
       return count;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `coins = [9, 6, 5, 1], V = 11`
@@ -184,7 +194,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int findContentChildren(int[] g, int[] s) {
       Arrays.sort(g);
       Arrays.sort(s);
@@ -198,7 +209,8 @@
       }
       return count;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `g = [1, 2, 3], s = [1, 1]`

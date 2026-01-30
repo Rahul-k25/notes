@@ -12,7 +12,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int NthRoot(int n, int x) {
       int low = 1, high = x;
       while (low <= high) {
@@ -28,7 +29,8 @@
       }
       return -1;  // No integer nth root found
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `x = 27, n = 3`
@@ -47,7 +49,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int findMedian(int[][] matrix) {
       int rows = matrix.length, cols = matrix[0].length;
       int low = matrix[0][0], high = matrix[0][cols - 1];
@@ -89,15 +92,18 @@
       }
       return low;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: 
-    ```
+    
+```
     [[1, 3, 5],
      [2, 6, 9],
      [3, 6, 9]]
-    ```
+    
+```
   - Output: `5`
 
 - **Similar Problems:** Find Median of Two Sorted Arrays, Find K-th Smallest Element in a Sorted Matrix.
@@ -112,7 +118,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int findSingleElement(int[] nums) {
       int low = 0, high = nums.length - 1;
       while (low < high) {
@@ -127,7 +134,8 @@
       }
       return nums[low];
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `[1, 1, 2, 2, 3, 4, 4]`
@@ -145,7 +153,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int search(int[] nums, int target) {
       int low = 0, high = nums.length - 1;
 
@@ -171,7 +180,8 @@
 
       return -1;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums = [4, 5, 6, 7, 0, 1, 2], target = 0`
@@ -189,7 +199,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public double findMedianSortedArrays(int[] nums1, int[] nums2) {
       if (nums1.length > nums2.length) {
           return findMedianSortedArrays(nums2, nums1);
@@ -222,7 +233,8 @@
       }
       return -1;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums1 = [1, 3], nums2 = [2]`
@@ -240,7 +252,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public int findKthElement(int[] nums1, int[] nums2, int k) {
       if (nums1.length > nums2.length) {
           return findKthElement(nums2, nums1, k);
@@ -271,7 +284,8 @@
       
       return -1;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums1 = [1, 3], nums2 = [2], k = 2`
@@ -289,7 +303,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public boolean isValid(int[] arr, int n, int m, int mid) {
       int studentCount = 1, pages = 0;
       for (int i = 0; i < n; i++) {
@@ -327,7 +342,8 @@
       
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `arr = [12, 34, 67, 90], n = 4, m = 2`
@@ -345,7 +361,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public boolean isPossible(int[] arr, int n, int k, int mid) {
       int count = 1, lastPosition = arr[0];
       for (int i = 1; i < n; i++) {
@@ -375,7 +392,8 @@
       
       return result;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `arr = [1, 2, 4, 8, 9], n = 5, k = 3`

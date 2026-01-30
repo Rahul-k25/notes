@@ -13,7 +13,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<String> permute(String str) {
       List<String> result = new ArrayList<>();
       backtrack(str.toCharArray(), 0, result);
@@ -37,7 +38,8 @@
       str[i] = str[j];
       str[j] = temp;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `"ABC"`
@@ -55,7 +57,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<List<String>> solveNQueens(int n) {
       List<List<String>> result = new ArrayList<>();
       int[] board = new int[n];  // board[i] = column where queen is placed in row i
@@ -95,7 +98,8 @@
       }
       return boardRepresentation;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `n = 4`
@@ -113,7 +117,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public void solveSudoku(char[][] board) {
       solve(board);
   }
@@ -146,11 +151,13 @@
       }
       return true;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: 
-    ```
+    
+```
     [["5","3",".",".","7",".",".",".","."],
      ["6",".",".","1","9","5",".",".","."],
      [".","9","8",".",".",".",".","6","."],
@@ -160,7 +167,8 @@
      [".","6",".",".",".",".","2","8","."],
      [".",".",".","4","1","9",".",".","5"],
      [".",".",".",".","8",".",".","7","9"]]
-    ```
+    
+```
   - Output: The solved sudoku grid.
 
 - **Similar Problems:** N-Queens Problem, Backtracking.
@@ -175,7 +183,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public boolean graphColoring(int[][] graph, int m, int n) {
       int[] colors = new int[n];
       return solve(graph, m, 0, colors);
@@ -205,7 +214,8 @@
       }
       return true;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `graph = [[0, 1, 1, 1], [1, 0, 1, 1], [1, 1, 0, 1], [1, 1, 1, 0]], m = 3`
@@ -224,7 +234,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<String> findPaths(int[][] maze, int n) {
       List<String> paths = new ArrayList<>();
       boolean[][] visited = new boolean[n][n];
@@ -247,7 +258,8 @@
       backtrack(maze, n, x, y - 1, path + "L", visited, paths);  // Left
       visited[x][y] = false;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `maze = [[1, 0, 0, 0], [1, 1, 0, 1], [0, 1, 0, 0], [1, 1, 1, 1]]`
@@ -266,7 +278,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<String> wordBreak(String s, Set<String> wordDict) {
       List<String> result = new ArrayList<>();
       backtrack(s, wordDict, 0, "", result);
@@ -285,7 +298,8 @@
           }
       }
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `s = "catsanddog"`, `wordDict = ["cat", "cats", "and", "sand", "dog"]`

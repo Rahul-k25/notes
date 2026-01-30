@@ -12,7 +12,8 @@
 
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode reverseList(ListNode head) {
       ListNode prev = null;
       ListNode current = head;
@@ -24,7 +25,8 @@
       }
       return prev;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `1 -> 2 -> 3 -> 4 -> 5`
@@ -42,7 +44,8 @@
 
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode middleNode(ListNode head) {
       ListNode slow = head;
       ListNode fast = head;
@@ -52,7 +55,8 @@
       }
       return slow;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `1 -> 2 -> 3 -> 4 -> 5`
@@ -70,7 +74,8 @@
 
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
       ListNode dummy = new ListNode(0);
       ListNode current = dummy;
@@ -87,7 +92,8 @@
       current.next = (l1 != null) ? l1 : l2;
       return dummy.next;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `l1 = 1 -> 2 -> 4`, `l2 = 1 -> 3 -> 4`
@@ -106,7 +112,8 @@
 
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public ListNode removeNthFromEnd(ListNode head, int n) {
       ListNode dummy = new ListNode(0);
       dummy.next = head;
@@ -122,7 +129,8 @@
       slow.next = slow.next.next;
       return dummy.next;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `head = 1 -> 2 -> 3 -> 4 -> 5`, `n = 2`
@@ -140,7 +148,8 @@
 
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public boolean isPalindrome(ListNode head) {
       if (head == null || head.next == null) return true;
       ListNode slow = head;
@@ -163,7 +172,8 @@
       }
       return true;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `1 -> 2 -> 2 -> 1`

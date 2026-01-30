@@ -13,7 +13,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<Integer> subsetSums(int[] nums) {
       List<Integer> result = new ArrayList<>();
       backtrack(nums, 0, 0, result);
@@ -28,7 +29,8 @@
       backtrack(nums, index + 1, currentSum + nums[index], result);  // Include current number
       backtrack(nums, index + 1, currentSum, result);  // Exclude current number
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums = [1, 2, 3]`
@@ -46,7 +48,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<List<Integer>> subsetsWithDup(int[] nums) {
       List<List<Integer>> result = new ArrayList<>();
       Arrays.sort(nums);
@@ -63,7 +66,8 @@
           current.remove(current.size() - 1);
       }
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `nums = [1, 2, 2]`
@@ -82,7 +86,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<List<Integer>> combinationSum(int[] candidates, int target) {
       List<List<Integer>> result = new ArrayList<>();
       backtrack(candidates, 0, target, new ArrayList<>(), result);
@@ -101,7 +106,8 @@
           current.remove(current.size() - 1);
       }
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `candidates = [2, 3, 6, 7], target = 7`
@@ -119,7 +125,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<List<Integer>> combinationSum2(int[] candidates, int target) {
       List<List<Integer>> result = new ArrayList<>();
       Arrays.sort(candidates);
@@ -140,7 +147,8 @@
           current.remove(current.size() - 1);
       }
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `candidates = [10, 1, 2, 7, 6, 5], target = 8`
@@ -159,7 +167,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public List<List<String>> partition(String s) {
       List<List<String>> result = new ArrayList<>();
       backtrack(s, 0, new ArrayList<>(), result);
@@ -190,7 +199,8 @@
       }
       return true;
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `"aab"`
@@ -208,7 +218,8 @@
   
 - **Code (Optimized):**
 
-  ```java
+  
+```java
   public String getPermutation(int n, int k) {
       List<Integer> numbers = new ArrayList<>();
       for (int i = 1; i <= n; i++) numbers.add(i);
@@ -225,7 +236,8 @@
       }
       return result.toString();
   }
-  ```
+  
+```
 
 - **Example Input:**
   - Input: `n = 3, k = 3`
