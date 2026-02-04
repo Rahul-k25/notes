@@ -34,6 +34,7 @@ Imagine a very busy restaurant.
 
 1. **Download:** Get the latest binary from [kafka.apache.org](https://kafka.apache.org/).
 2. **Start Zookeeper:** Kafka needs a coordinator to run.
+
 ```bash
 # Open a terminal and run:
 bin/zookeeper-server-start.sh config/zookeeper.properties
@@ -42,6 +43,7 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 
 
 3. **Start Kafka Broker:** Now start the actual engine.
+
 ```bash
 # Open a NEW terminal and run:
 bin/kafka-server-start.sh config/server.properties
@@ -50,6 +52,7 @@ bin/kafka-server-start.sh config/server.properties
 
 
 4. **Create a Topic:** We need a place to send our messages. Let's call it `logs`.
+
 ```bash
 bin/kafka-topics.sh --create --topic logs --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 
