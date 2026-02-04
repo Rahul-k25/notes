@@ -10,6 +10,7 @@
 - [Java](backend/java.md)
 - [Kafka scenario example](backend/kafka.md)
 - [GraphQL](backend/graphql.md)
+- [SQL Advance](backend/sql_advance.md)
 
 <script src="../assets/js/accordion.js"></script>
 <script src="../assets/js/theme.js"></script>
