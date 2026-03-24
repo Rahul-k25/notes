@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/styles.css">
 
 # Advanced SQL Study Notes
 
@@ -624,5 +624,5 @@ Follow-up:
 2. [How do composite indexes work?](https://www.google.com/search?q=How+do+composite+indexes+work)
 
 
-<script src="../assets/js/accordion.js"></script>
-<script src="../assets/js/theme.js"></script>
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>
