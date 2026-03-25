@@ -270,7 +270,7 @@ int[] arr = new int[5];                   // [0, 0, 0, 0, 0]
 int[] arr = {1, 2, 3, 4, 5};             // inline init
 int[] arr = new int[]{1, 2, 3};          // explicit inline
 int[][] matrix = new int[3][4];           // 3 rows, 4 cols
-int[][] matrix = {{1,2},{3,4},{5,6}};     // inline 2D
+int[][] matrix = new int[][]{{1,2},{3,4},{5,6}};     // inline 2D
 char[] chars = new char[26];              // for frequency maps
 ```
 
