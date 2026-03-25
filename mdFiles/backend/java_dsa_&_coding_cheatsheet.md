@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/styles.css">
+
 # Java DSA & Coding Cheatsheet — Complete Reference
 
 > **Scope:** String, StringBuilder, Arrays, Collections (List, Set, Map variants), Queue, Deque, Stack, PriorityQueue, Sorting (Comparator/Comparable), Streams, and more.  
@@ -1548,4 +1550,6 @@ Need deque? → ArrayDeque
 
 ---
 
-*End of Java DSA & Coding Cheatsheet*
+
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>

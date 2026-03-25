@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/styles.css">
+
 # Spring Boot — Complete Preparation Guide
 
 ## Table of Contents
@@ -4436,3 +4438,7 @@ Intercepts every bean after creation. Called before and after initialization. Sp
 
 ---
 
+
+
+<script src="../../assets/js/accordion.js"></script>
+<script src="../../assets/js/theme.js"></script>
